@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anders Schriver — Webdesigner fra Danmark. Jeg laver moderne hjemmesider til små virksomheder der vil skille sig ud.">
+    <title>Anders Schriver | Webdesigner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --dark: #1e293b;
+            --black: #0f172a;
+            --accent: #6366f1;
+            --accent-dark: #4f46e5;
+            --accent-soft: #eef2ff;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Cursor glow effekt */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .logo span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a:not(.nav-cta) { display: none; }
+        }
+
+        /* Hero */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: var(--accent-soft);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--black);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 36px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn svg { width: 20px; height: 20px; }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--dark);
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); }
+
+        /* Work */
+        .work {
+            padding: 100px 0;
+            background: var(--light);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .work-grid { grid-template-columns: 1fr; }
+        }
+
+        .work-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            display: block;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .work-image {
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .work-content {
+            padding: 24px;
+        }
+
+        .work-tag {
+            display: inline-block;
+            background: var(--accent-soft);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .work-card h3 {
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-bottom: 8px;
+        }
+
+        .work-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        .service-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--gradient);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* About */
+        .about {
+            padding: 100px 0;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        .about-content h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 32px;
+        }
+
+        .about-stat h4 {
+            font-size: 2rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-stat p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+        }
+
+        .about-visual {
+            background: var(--gradient);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+        }
+
+        .about-visual-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .about-visual h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .about-visual p {
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--light);
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: var(--gray);
+            font-size: 1.15rem;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+        }
+
+        .cta-btn svg { width: 24px; height: 24px; }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Nav -->
+    <nav>
+        <div class="container">
+            <div class="logo">anders<span>schriver</span></div>
+            <div class="nav-links">
+                <a href="#arbejde">Arbejde</a>
+                <a href="#ydelser">Ydelser</a>
+                <a href="#om">Om mig</a>
+                <a href="mailto:hej@andersschriver.dk" class="nav-cta">Skriv til mig</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">✨ Freelance webdesigner</div>
+                <h1>Jeg laver hjemmesider der <span class="gradient">får dig bemærket</span></h1>
+                <p>Moderne, hurtige og mobilvenlige hjemmesider til små virksomheder der vil skille sig ud online. Ingen templates — kun skræddersyet design.</p>
+                <div class="hero-buttons">
+                    <a href="mailto:hej@andersschriver.dk" class="btn btn-primary">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        Start en snak
+                    </a>
+                    <a href="#arbejde" class="btn btn-secondary">Se mit arbejde</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work -->
+    <section class="work" id="arbejde">
+        <div class="container">
+            <div class="section-header">
+                <h2>Udvalgte projekter</h2>
+                <p>Et par eksempler på hvad jeg kan lave for dig</p>
+            </div>
+
+            <div class="work-grid">
+                <a href="kunder/frants-larsen/v1/" class="work-card">
+                    <div class="work-image">🎨</div>
+                    <div class="work-content">
+                        <span class="work-tag">Malerfirma</span>
+                        <h3>Frants Larsen Maler</h3>
+                        <p>Moderne site til lokalt malerfirma i Viborg. Clean design med fokus på tillid.</p>
+                    </div>
+                </a>
+                <a href="kunder/norremarkens-auto/v1/" class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #ef4444, #f97316);">🚗</div>
+                    <div class="work-content">
+                        <span class="work-tag">Autoværksted</span>
+                        <h3>Nørremarkens Auto</h3>
+                        <p>Professionel hjemmeside til Hella Service Partner i Vejle.</p>
+                    </div>
+                </a>
+                <a href="kunder/bertelsen-blomster/v1/" class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #10b981, #4ade80);">🌷</div>
+                    <div class="work-content">
+                        <span class="work-tag">Blomsterhandler</span>
+                        <h3>Bertelsen Blomster</h3>
+                        <p>Elegant og indbydende design til blomsterbutik i Horsens.</p>
+                    </div>
+                </a>
+                <a href="kunder/frants-larsen/v2/" class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">🎨</div>
+                    <div class="work-content">
+                        <span class="work-tag">Malerfirma</span>
+                        <h3>Frants Larsen v2</h3>
+                        <p>Alternativt design med lys, minimal stil.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="ydelser">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hvad jeg kan hjælpe med</h2>
+                <p>Alt hvad du skal bruge for at komme godt online</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3>Hjemmesider</h3>
+                    <p>Skræddersyede hjemmesider der fungerer perfekt på alle enheder.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    <h3>Redesign</h3>
+                    <p>Giv din nuværende hjemmeside et moderne look der konverterer.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3>Hurtig levering</h3>
+                    <p>De fleste projekter leveres inden for 1-2 uger.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="om">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Hej, jeg hedder Anders</h2>
+                    <p>Jeg er freelance webdesigner fra Danmark med passion for at hjælpe små virksomheder med at se professionelle ud online.</p>
+                    <p>Ingen komplicerede systemer eller dyre abonnementer — bare enkle, smukke hjemmesider der virker.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <h4>50+</h4>
+                            <p>Projekter</p>
+                        </div>
+                        <div class="about-stat">
+                            <h4>100%</h4>
+                            <p>Tilfredse kunder</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-visual-emoji">👨‍💻</div>
+                    <h3>Klar til at snakke?</h3>
+                    <p>Skriv til mig, så finder vi ud af hvad du har brug for</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Klar til en ny hjemmeside?</h2>
+            <p>Fortæl mig om dit projekt, så vender jeg tilbage med et forslag og pris.</p>
+            <a href="mailto:hej@andersschriver.dk" class="cta-btn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                hej@andersschriver.dk
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">anders<span>schriver</span></div>
+                <p>© 2026 Anders Schriver — Freelance webdesigner</p>
+                <a href="mailto:hej@andersschriver.dk">hej@andersschriver.dk</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Subtil cursor glow effekt
+        const cursorGlow = document.getElementById('cursorGlow');
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateGlow() {
+            glowX += (mouseX - glowX) * 0.08;
+            glowY += (mouseY - glowY) * 0.08;
+            cursorGlow.style.left = glowX + 'px';
+            cursorGlow.style.top = glowY + 'px';
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+    </script>
+</body>
+</html>
