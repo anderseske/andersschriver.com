@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach Drafts — Anders Eske</title>
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card: #1a1a1a;
+            --border: #2a2a2a;
+            --text: #e5e5e5;
+            --muted: #888;
+            --accent: #6366f1;
+            --green: #22c55e;
+            --orange: #f97316;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--muted); margin-bottom: 2rem; }
+        
+        .draft-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .draft-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        .draft-title { font-size: 1.25rem; font-weight: 600; }
+        .draft-tier {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--accent);
+            color: white;
+        }
+        .draft-tier.tier2 { background: var(--muted); }
+        
+        .draft-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+            color: var(--muted);
+        }
+        .draft-meta a { color: var(--accent); text-decoration: none; }
+        .draft-meta a:hover { text-decoration: underline; }
+        
+        label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 6px;
+            margin-top: 16px;
+        }
+        input, textarea {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        textarea { min-height: 200px; resize: vertical; }
+        
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-secondary {
+            background: var(--border);
+            color: var(--text);
+        }
+        .btn-secondary:hover { background: #3a3a3a; }
+        
+        .status {
+            margin-top: 12px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            display: none;
+        }
+        .status.show { display: block; }
+        .status.success { background: rgba(34, 197, 94, 0.2); color: var(--green); }
+        .status.pending { background: rgba(249, 115, 22, 0.2); color: var(--orange); }
+        
+        .summary {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        .summary h2 { font-size: 1rem; margin-bottom: 12px; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            text-align: center;
+        }
+        .summary-num { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .summary-label { font-size: 0.75rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Outreach Drafts</h1>
+        <p class="subtitle">Podcast-produktion outreach — klar til review og afsendelse</p>
+        
+        <div class="summary">
+            <h2>Status</h2>
+            <div class="summary-grid">
+                <div>
+                    <div class="summary-num">9</div>
+                    <div class="summary-label">Drafts klar</div>
+                </div>
+                <div>
+                    <div class="summary-num" id="pending-count">0</div>
+                    <div class="summary-label">Sendt til John</div>
+                </div>
+                <div>
+                    <div class="summary-num" id="sent-count">0</div>
+                    <div class="summary-label">Afsendt</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Draft 9: AI Denmark -->
+        <div class="draft-card" data-id="9">
+            <div class="draft-header">
+                <div class="draft-title">AI Denmark Podcast</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 aidk@podlab.dk</span>
+                <span>👤 Anders Høeg Nissen</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til AI Denmark?">
+            <label>Besked</label>
+            <textarea class="body">Hej Anders,
+
+Jeg har fulgt AI Denmark podcasten — virkelig stærkt at gøre AI tilgængeligt for danske virksomheder. Sæson 2 ser ud til at køre godt!
+
+Jeg hedder (også) Anders og er podcast-producer med 1000+ episoder bag mig. Jeg arbejder med Mørkeland, Aktieuniverset og andre ugentlige shows.
+
+Jeg ville høre: Har I nogensinde overvejet at outsource produktionen? Det kunne frigive mere tid til research og gæste-koordinering — især nu hvor AI udvikler sig så hurtigt at der hele tiden er nyt at dække.
+
+Jeg kan tage mig af:
+- Klipning og efterbehandling
+- Støjreduktion og lydpolering
+- Video snippets til LinkedIn/sociale medier
+
+Hvis det er interessant — eller hvis du vil snakke om RumSnak også — så book et kald her: calendly.com/anderseske/introduction
+
+Mvh,
+Anders Eske</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 5: Unge Aktionærers Podcast -->
+        <div class="draft-card" data-id="5">
+            <div class="draft-header">
+                <div class="draft-title">Unge Aktionærers Podcast</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 sc@shareholders.dk</span>
+                <span>👤 Sejer Stray Christiansen</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Lyd-produktion til Unge Aktionærers Podcast?">
+            <label>Besked</label>
+            <textarea class="body">Hej Sejer og Markus,
+
+Jeg faldt over Unge Aktionærers Podcast — fedt at se en frisk stemme i investerings-podcasts! Det er præcis den slags content der manglede: nede på jorden, nysgerrig, og uden at spille ekspert.
+
+Jeg hedder Anders og er podcast-producer med 4+ års erfaring. Jeg klipper bl.a. Aktieuniverset hver uge (så jeg kender finans-genren), plus Mørkeland og en række andre.
+
+Hvis I nogensinde overvejer at få hjælp til produktionen — klipning, støjreduktion, mixning — så I kan fokusere på content og community, så vil jeg gerne snakke.
+
+Book et kort kald her hvis det lyder relevant: calendly.com/anderseske/introduction
+
+Keep it up! 📈
+
+Bedste hilsner,
+Anders</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 7: Iværksætterdrømme -->
+        <div class="draft-card" data-id="7">
+            <div class="draft-header">
+                <div class="draft-title">Iværksætterdrømme</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 alexander@ivaerksaetterdroemme.dk</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til Iværksætterdrømme?">
+            <label>Besked</label>
+            <textarea class="body">Hej Anders og Alexander,
+
+Som én Anders til en anden — jeg har fulgt Iværksætterdrømme og kan godt lide det ærlige format. Det er inspirerende at høre rigtige historier fra frontlinjen.
+
+Jeg er podcast-producer med 4+ års erfaring og 1000+ episoder. Jeg arbejder med podcasts som Mørkeland og Aktieuniverset.
+
+Da I selv er iværksættere, ved I sikkert at tid er den knappe ressource. Jeg ville høre om I nogensinde har overvejet at få hjælp til lydproduktionen — så I kan fokusere på at finde gæster og skabe indhold?
+
+Jeg kan tage mig af alt fra klipning til færdig episode, inkl.:
+- Støjreduktion og lydoptimering
+- Professionel mixning
+- Video snippets til sociale medier
+
+Hvis det lyder relevant, så book en uforpligtende snak her: calendly.com/anderseske/introduction
+
+Mvh,
+Anders Eske</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 8: At Turde FM -->
+        <div class="draft-card" data-id="8">
+            <div class="draft-header">
+                <div class="draft-title">At Turde FM</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 brian@atturde.dk</span>
+                <span>👤 Brian Johannsen</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til At Turde FM?">
+            <label>Besked</label>
+            <textarea class="body">Hej Brian,
+
+Jeg har lyttet til At Turde FM — du er virkelig god til at filosofere om iværksætteri på en måde der føles ægte. Kombinationen med YouTube (At Turde TV) er også smart.
+
+Jeg hedder Anders og arbejder som podcast-producer. Med 1000+ episoder bag mig (bl.a. Mørkeland og Aktieuniverset) er jeg vant til at levere konsistent kvalitet.
+
+Jeg ville høre: Klarer du selv al produktionen, eller kunne du bruge en hånd? 
+
+Jeg kan tage mig af:
+- Klipning og lydbehandling
+- Video snippets til sociale medier
+- Generel teknisk sparring
+
+Det kunne frigive tid til det du er bedst til — nemlig at grave i iværksætter-mentaliteten.
+
+Lad os tage en kort snak hvis det er interessant: calendly.com/anderseske/introduction
+
+Mvh,
+Anders Eske</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 3: Elefanten i Rummet -->
+        <div class="draft-card" data-id="3">
+            <div class="draft-header">
+                <div class="draft-title">Elefanten i Rummet</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 brevkasse@elefantenirummet.dk</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-hjælp?">
+            <label>Besked</label>
+            <textarea class="body">Hej Elefanten-holdet,
+
+Jeg er stor fan af podcasten — og jeg kan se I har bygget noget fedt op med både podcast og merch.
+
+Jeg hedder Anders og arbejder som podcast-producer. Jeg klipper bl.a. Mørkeland (true crime) og Aktieuniverset hver uge. 
+
+Jeg ville bare høre om I nogensinde har overvejet at få hjælp til lyd-produktionen? Det kunne frigive tid til at lave mere content eller... sælge flere elefant-t-shirts 😄
+
+Hvis det er interessant, så skriv endelig tilbage — eller book en uforpligtende snak her: calendly.com/anderseske/introduction
+
+Bedste hilsner,
+Anders</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 6: Investering på hjernen -->
+        <div class="draft-card" data-id="6">
+            <div class="draft-header">
+                <div class="draft-title">Investering på hjernen</div>
+                <span class="draft-tier">Tier 1</span>
+            </div>
+            <div class="draft-meta">
+                <span>🔗 <a href="https://linkedin.com/in/jensballe" target="_blank">LinkedIn: jensballe</a></span>
+                <span>👤 Jens Balle</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til Investering på hjernen?">
+            <label>Besked</label>
+            <textarea class="body">Hej Jens,
+
+Jeg har lyttet til Investering på hjernen — virkelig godt stof om investorpsykologi. Det er befriende at høre nogen fokusere på *mennesket* bag investeringerne frem for bare tal.
+
+Jeg hedder Anders, freelance podcast-producer med 1000+ episoder bag mig. Jeg klipper bl.a. Aktieuniverset og Mørkeland hver uge.
+
+Jeg ville høre: Laver du selv al produktionen, eller har du overvejet at outsource det? Mange podcasters finder at de får mere tid til selve indholdet (og gæste-research) når de slipper for det tekniske.
+
+Jeg kan tage mig af:
+- Klipning og efterbehandling
+- Støjreduktion og lydpolering
+- Evt. video snippets til LinkedIn
+
+Hvis det er interessant, så lad os tage en kort, uforpligtende snak: calendly.com/anderseske/introduction
+
+Mvh,
+Anders Eske</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Tier 2 drafts -->
+        <!-- Draft 1: Videnskabeligt Udfordret -->
+        <div class="draft-card" data-id="1">
+            <div class="draft-header">
+                <div class="draft-title">Videnskabeligt Udfordret</div>
+                <span class="draft-tier tier2">Tier 2</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 Mangler email</span>
+                <span>👤 Mark & Flemming</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Lyd-hjælp til Videnskabeligt Udfordret?">
+            <label>Besked</label>
+            <textarea class="body">Hej Mark og Flemming,
+
+Jeg faldt over Videnskabeligt Udfordret for nylig — jeg elsker konceptet med at gøre folk "klog på en dum måde". CIA og telefonerende vand? Genialt.
+
+Jeg hedder Anders og arbejder som podcast-producer. Jeg har klippet 1000+ episoder for podcasts som Mørkeland og Aktieuniverset, og jeg ville høre om I nogensinde har overvejet at få hjælp til produktionen?
+
+Jeg kan tage mig af:
+- Klipning og støjreduktion
+- Mixning så lyden popper
+- Video snippets til sociale medier
+
+Så I kan fokusere på at grave vanvittige historier frem i stedet for at sidde i Audacity.
+
+Hvis det lyder interessant, så svar bare på denne mail — eller book et kort kald her: calendly.com/anderseske/introduction
+
+Uanset hvad, keep up the good work 🔬
+
+Bedste hilsner,
+Anders</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 2: Landbrugspodcasten -->
+        <div class="draft-card" data-id="2">
+            <div class="draft-header">
+                <div class="draft-title">Landbrugspodcasten</div>
+                <span class="draft-tier tier2">Tier 2</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 Find på landbrugspodcasten.dk/kontakt</span>
+                <span>📝 15+ podcast-serier!</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til Landbrugspodcasten?">
+            <label>Besked</label>
+            <textarea class="body">Hej,
+
+Jeg så at I kører et imponerende podcast-netværk med alt fra Mælketanken til Planteavlerne — det er seriøst mange serier at holde styr på!
+
+Jeg hedder Anders og er freelance podcast-producer med 4+ års erfaring og 1000+ episoder bag mig. Jeg arbejder bl.a. med Mørkeland og Aktieuniverset.
+
+Jeg ville høre: Har I nogensinde brug for ekstra hænder til produktion? Jeg kan hjælpe med:
+
+- Klipning og efterbehandling af episoder
+- Støjreduktion og lydoptimering
+- Video snippets til sociale medier
+
+Jeg er vant til at arbejde med faste deadlines og levere konsistent kvalitet uge efter uge.
+
+Hvis det kunne være relevant, så lad os tage en kort snak: calendly.com/anderseske/introduction
+
+Mvh,
+Anders Eske
+mail@anderseske.com</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+        <!-- Draft 4: Brian Mørk Show -->
+        <div class="draft-card" data-id="4">
+            <div class="draft-header">
+                <div class="draft-title">Brian Mørk Show</div>
+                <span class="draft-tier tier2">Tier 2</span>
+            </div>
+            <div class="draft-meta">
+                <span>📧 Mangler email</span>
+                <span>⚠️ Produceret af Podads (Anders' arbejdsgiver!)</span>
+            </div>
+            <label>Emne</label>
+            <input type="text" class="subject" value="Podcast-produktion til Brian Mørk Show?">
+            <label>Besked</label>
+            <textarea class="body">Hej Brian,
+
+Jeg er stor fan af showet — 599 afsnit er seriøst imponerende, og kvaliteten holder hele vejen. 
+
+Jeg hedder Anders og arbejder som freelance podcast-producer. Jeg klipper bl.a. Mørkeland og Aktieuniverset hver uge, og har 1000+ episoder bag mig.
+
+Jeg ved du kører gennem Podads, men jeg ville høre om du nogensinde har brug for ekstra hænder til produktion? Særligt hvis der er perioder med høj volumen, live-shows der skal efterbehandles, eller bare behov for backup.
+
+Jeg kan hjælpe med:
+- Klipning og lydbehandling
+- Video snippets til sociale medier  
+- Teknisk sparring
+
+Hvis det kunne være relevant — nu eller i fremtiden — så skriv endelig tilbage eller book en kort snak her: calendly.com/anderseske/introduction
+
+Keep up the good work 🎤
+
+Mvh,
+Anders</textarea>
+            <div class="btn-row">
+                <button class="btn-primary" onclick="sendToJohn(this)">✅ Send til John</button>
+                <button class="btn-secondary" onclick="markSent(this)">📤 Markér som afsendt</button>
+            </div>
+            <div class="status"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Load state from localStorage
+        let state = JSON.parse(localStorage.getItem('outreach-state') || '{}');
+        updateCounts();
+
+        function sendToJohn(btn) {
+            const card = btn.closest('.draft-card');
+            const id = card.dataset.id;
+            const title = card.querySelector('.draft-title').textContent;
+            const subject = card.querySelector('.subject').value;
+            const body = card.querySelector('.body').value;
+            const status = card.querySelector('.status');
+
+            // Create message for John
+            const message = `📧 OUTREACH DRAFT #${id}: ${title}\n\n**Emne:** ${subject}\n\n**Besked:**\n${body}\n\n---\n✅ Godkendt af Anders — klar til afsendelse når du siger go.`;
+            
+            // Copy to clipboard
+            navigator.clipboard.writeText(message).then(() => {
+                status.textContent = '✅ Kopieret til udklipsholder! Paste i Telegram til John.';
+                status.className = 'status show success';
+                
+                // Save state
+                state[id] = { status: 'pending', subject, body };
+                localStorage.setItem('outreach-state', JSON.stringify(state));
+                updateCounts();
+            });
+        }
+
+        function markSent(btn) {
+            const card = btn.closest('.draft-card');
+            const id = card.dataset.id;
+            const status = card.querySelector('.status');
+            
+            state[id] = { ...state[id], status: 'sent' };
+            localStorage.setItem('outreach-state', JSON.stringify(state));
+            
+            status.textContent = '📤 Markeret som afsendt!';
+            status.className = 'status show success';
+            card.style.opacity = '0.5';
+            updateCounts();
+        }
+
+        function updateCounts() {
+            const pending = Object.values(state).filter(s => s.status === 'pending').length;
+            const sent = Object.values(state).filter(s => s.status === 'sent').length;
+            document.getElementById('pending-count').textContent = pending;
+            document.getElementById('sent-count').textContent = sent;
+        }
+    </script>
+</body>
+</html>
