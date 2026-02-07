@@ -15,10 +15,10 @@
             --gray: #64748b;
             --dark: #1e293b;
             --black: #0f172a;
-            --accent: #6366f1;
-            --accent-dark: #4f46e5;
-            --accent-soft: #eef2ff;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+            --accent: #0066ff;
+            --accent-dark: #0052cc;
+            --accent-soft: #e6f0ff;
+            --gradient: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -66,16 +66,33 @@
         }
 
         .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--black);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
-        .logo span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .logo-accent {
+            display: none;
+        }
+
+        .logo-name {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--black);
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+
+        .logo-name strong {
+            font-weight: 700;
+        }
+
+        .logo-subtitle {
+            font-size: 0.6rem;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 1px;
         }
 
         .nav-links {
@@ -202,6 +219,52 @@
 
         .btn-secondary:hover { border-color: var(--accent); }
 
+        /* Services */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 40px 32px;
+            border-radius: 16px;
+            background: var(--light);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: var(--black);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* Work */
         .work {
             padding: 100px 0;
@@ -243,8 +306,6 @@
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid #e2e8f0;
-            text-decoration: none;
-            display: block;
         }
 
         .work-card:hover {
@@ -473,15 +534,33 @@
         }
 
         .footer-logo {
-            font-size: 1.3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .footer-logo .logo-accent {
+            display: none;
+        }
+
+        .footer-logo .logo-name {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: white;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+
+        .footer-logo .logo-name strong {
             font-weight: 700;
         }
 
-        .footer-logo span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .footer-logo .logo-subtitle {
+            font-size: 0.6rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 1px;
         }
 
         footer p {
@@ -502,7 +581,11 @@
     <!-- Nav -->
     <nav>
         <div class="container">
-            <div class="logo">anders<span>schriver</span></div>
+            <div class="logo">
+                <div class="logo-accent"></div>
+                <div class="logo-name">Anders <strong>Schriver</strong></div>
+                <div class="logo-subtitle">Web Design Studio</div>
+            </div>
             <div class="nav-links">
                 <a href="#arbejde">Arbejde</a>
                 <a href="#ydelser">Ydelser</a>
@@ -530,6 +613,33 @@
         </div>
     </section>
 
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hvad kan jeg hjælpe med?</h2>
+                <p>Jeg hjælper små virksomheder med at se professionelle ud online</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Ny hjemmeside</h3>
+                    <p>Moderne, hurtig og mobilvenlig hjemmeside der får din virksomhed til at skille sig ud.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Redesign</h3>
+                    <p>Giv din eksisterende hjemmeside et friskt look der matcher din virksomhed i dag.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>Optimering</h3>
+                    <p>Hurtigere loadtider, bedre SEO og en side der rent faktisk konverterer besøgende.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Work -->
     <section class="work" id="arbejde">
         <div class="container">
@@ -539,63 +649,37 @@
             </div>
 
             <div class="work-grid">
-                <a href="frants-larsen/" class="work-card">
+                <div class="work-card">
                     <div class="work-image">🎨</div>
                     <div class="work-content">
                         <span class="work-tag">Malerfirma</span>
                         <h3>Frants Larsen Maler</h3>
                         <p>Moderne site til lokalt malerfirma i Viborg. Clean design med fokus på tillid.</p>
                     </div>
-                </a>
-                <a href="norremarkens-auto/" class="work-card">
+                </div>
+                <div class="work-card">
                     <div class="work-image" style="background: linear-gradient(135deg, #ef4444, #f97316);">🚗</div>
                     <div class="work-content">
                         <span class="work-tag">Autoværksted</span>
                         <h3>Nørremarkens Auto</h3>
                         <p>Professionel hjemmeside til Hella Service Partner i Vejle.</p>
                     </div>
-                </a>
-                <a href="bertelsen-blomster/" class="work-card">
+                </div>
+                <div class="work-card">
                     <div class="work-image" style="background: linear-gradient(135deg, #10b981, #4ade80);">🌷</div>
                     <div class="work-content">
                         <span class="work-tag">Blomsterhandler</span>
                         <h3>Bertelsen Blomster</h3>
                         <p>Elegant og indbydende design til blomsterbutik i Horsens.</p>
                     </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services" id="ydelser">
-        <div class="container">
-            <div class="section-header">
-                <h2>Hvad jeg kan hjælpe med</h2>
-                <p>Alt hvad du skal bruge for at komme godt online</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </div>
-                    <h3>Hjemmesider</h3>
-                    <p>Skræddersyede hjemmesider der fungerer perfekt på alle enheder.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <div class="work-card">
+                    <div class="work-image" style="background: linear-gradient(135deg, #f472b6, #ec4899);">💇</div>
+                    <div class="work-content">
+                        <span class="work-tag">Frisør</span>
+                        <h3>Salon Eksempel</h3>
+                        <p>Stilfuld one-pager med online booking og prisliste.</p>
                     </div>
-                    <h3>Redesign</h3>
-                    <p>Giv din nuværende hjemmeside et moderne look der konverterer.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <h3>Hurtig levering</h3>
-                    <p>De fleste projekter leveres inden for 1-2 uger.</p>
                 </div>
             </div>
         </div>
@@ -645,7 +729,11 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">anders<span>schriver</span></div>
+                <div class="footer-logo">
+                    <div class="logo-accent"></div>
+                    <div class="logo-name">Anders <strong>Schriver</strong></div>
+                    <div class="logo-subtitle">Web Design Studio</div>
+                </div>
                 <p>© 2026 Anders Schriver — Freelance webdesigner</p>
                 <a href="mailto:hej@andersschriver.dk">hej@andersschriver.dk</a>
             </div>
@@ -673,6 +761,4 @@
         animateGlow();
     </script>
 </body>
-<!-- Deployed via GitHub -->
 </html>
-<!-- Fri Feb  6 21:27:37 +04 2026 -->
