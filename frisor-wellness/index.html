@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frisør & Wellness Viborg — Hos Høeg</title>
+<meta name="description" content="Frisør & Wellness i Viborg. DM og VM deltagere. Book tid online. Randersvej 66F, 8800 Viborg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#C5A572;--gold-light:#D4BC8B;--gold-dark:#A8894E;
+--cream:#FAF7F2;--cream-dark:#F0EBE3;
+--charcoal:#2C2C2C;--charcoal-light:#4A4A4A;
+--white:#FFFFFF;--black:#1A1A1A;
+--rose:#E8D5D0;--sage:#D4DDD4;
+--serif:'Playfair Display',Georgia,serif;
+--sans:'Inter',-apple-system,sans-serif;
+--transition:0.4s cubic-bezier(.25,.46,.45,.94);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);color:var(--charcoal);background:var(--cream);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:var(--transition)}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(20px);box-shadow:0 1px 30px rgba(0,0,0,.06);padding:.7rem 2rem}
+.nav-logo img{height:100px;transition:var(--transition)}
+.nav.scrolled .nav-logo img{height:60px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--white);transition:var(--transition);position:relative}
+.nav.scrolled .nav-links a{color:var(--charcoal)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:var(--transition)}
+.nav-links a:hover::after{width:100%}
+.nav-book{background:var(--gold)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:0;font-weight:600;letter-spacing:.1em;transition:var(--transition)}
+.nav-book:hover{background:var(--gold-dark)!important;transform:translateY(-1px)}
+.nav-book::after{display:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:25px;height:2px;background:var(--white);transition:var(--transition)}
+.nav.scrolled .hamburger span{background:var(--charcoal)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}
+.hero-bg-img.active{opacity:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,26,26,.45) 0%,rgba(26,26,26,.6) 50%,rgba(26,26,26,.75) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;color:var(--white);max-width:800px;padding:0 2rem}
+.hero-badge{display:inline-block;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;border:1px solid var(--gold);color:var(--gold);padding:.5rem 1.5rem;margin-bottom:2rem;font-family:var(--sans);font-weight:500}
+.hero h1{font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.hero h1 em{font-style:italic;color:var(--gold-light);font-weight:400}
+.hero-sub{font-size:1.05rem;font-weight:300;letter-spacing:.03em;opacity:.85;margin-bottom:2.5rem;max-width:550px;margin-left:auto;margin-right:auto}
+.btn{display:inline-block;padding:.9rem 2.5rem;font-size:.8rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;transition:var(--transition);cursor:pointer;border:none;font-family:var(--sans)}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-2px);box-shadow:0 10px 30px rgba(197,165,114,.3)}
+.btn-outline{border:1px solid var(--white);color:var(--white);background:transparent;margin-left:1rem}
+.btn-outline:hover{background:var(--white);color:var(--charcoal)}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--white);opacity:.6;animation:bounce 2s infinite;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+.hero-scroll span{display:block;width:1px;height:40px;background:var(--white);margin:8px auto 0;opacity:.4}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-label{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:.8rem;display:block}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--black);line-height:1.2;margin-bottom:1rem}
+.section-line{width:60px;height:1.5px;background:var(--gold);margin:1.2rem auto 0}
+.container{max-width:1200px;margin:0 auto}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-images{display:grid;grid-template-columns:1fr 1fr;gap:1rem;position:relative}
+.about-images img{width:100%;height:250px;object-fit:cover}
+.about-images img:first-child{grid-column:1/-1;height:300px}
+.about-text h3{font-family:var(--serif);font-size:1.8rem;margin-bottom:1.5rem;color:var(--black)}
+.about-text p{color:var(--charcoal-light);margin-bottom:1rem;font-weight:300;line-height:1.8}
+.about-badges{display:flex;gap:1.5rem;margin-top:2rem}
+.about-badge{text-align:center;padding:1.2rem;background:var(--cream);flex:1}
+.about-badge .num{font-family:var(--serif);font-size:1.8rem;color:var(--gold);display:block}
+.about-badge .label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal-light);margin-top:.3rem;display:block}
+
+/* GALLERY */
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+.gallery-grid a{overflow:hidden;position:relative;aspect-ratio:1}
+.gallery-grid a:nth-child(1){grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-grid a:nth-child(5){grid-column:span 2}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;will-change:transform}
+.gallery-grid a:hover img{transform:scale(1.05)}
+.gallery-grid a::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.2),transparent);opacity:0;transition:var(--transition)}
+.gallery-grid a:hover::after{opacity:1}
+
+/* SERVICES */
+.services{background:var(--white)}
+.services-nav{display:flex;justify-content:center;gap:1rem;margin-bottom:3rem;flex-wrap:wrap}
+.services-nav button{background:none;border:1px solid var(--cream-dark);padding:.6rem 1.5rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:var(--transition);color:var(--charcoal-light)}
+.services-nav button.active,.services-nav button:hover{border-color:var(--gold);color:var(--gold);background:rgba(197,165,114,.06)}
+.price-category{display:none}
+.price-category.active{display:block}
+.price-group{margin-bottom:2.5rem}
+.price-group-title{font-family:var(--serif);font-size:1.3rem;color:var(--black);margin-bottom:1.2rem;padding-bottom:.6rem;border-bottom:1px solid var(--cream-dark)}
+.price-item{display:flex;justify-content:space-between;align-items:baseline;padding:.55rem 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.price-item:last-child{border-bottom:none}
+.price-name{font-weight:400;color:var(--charcoal);font-size:.92rem}
+.price-dots{flex:1;border-bottom:1px dotted rgba(0,0,0,.15);margin:0 1rem;min-width:2rem;align-self:end;margin-bottom:5px}
+.price-value{font-weight:500;color:var(--gold-dark);white-space:nowrap;font-size:.92rem}
+.price-note{font-size:.82rem;color:var(--charcoal-light);font-style:italic;padding:.8rem 0;line-height:1.6;background:var(--cream);padding:1rem 1.2rem;margin-top:.5rem;border-left:3px solid var(--gold)}
+.price-columns{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem}
+
+/* CONTACT */
+.contact{background:var(--charcoal);color:var(--white)}
+.contact .section-title{color:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.contact-info h3{font-family:var(--serif);font-size:1.4rem;margin-bottom:1.5rem;color:var(--gold-light)}
+.contact-detail{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start}
+.contact-detail .icon{width:40px;height:40px;border:1px solid rgba(197,165,114,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:1rem}
+.contact-detail .text{font-weight:300;line-height:1.6}
+.contact-detail .text strong{font-weight:500;display:block;margin-bottom:.2rem}
+.hours-grid{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1.5rem;margin-top:1rem}
+.hours-grid .day{font-weight:500;font-size:.88rem}
+.hours-grid .time{font-weight:300;color:rgba(255,255,255,.7);font-size:.88rem}
+.contact-map{overflow:hidden;min-height:400px;position:relative}
+.contact-map iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.1)}
+
+/* FOOTER */
+.footer{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:2rem;font-size:.78rem;letter-spacing:.05em}
+
+/* LIGHTBOX */
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain}
+.lightbox-close{position:absolute;top:1.5rem;right:2rem;color:var(--white);font-size:2rem;cursor:pointer;opacity:.7}
+
+/* FLOATING BOOK */
+.floating-book{position:fixed;bottom:2rem;right:2rem;z-index:999;opacity:0;transform:translateY(20px);transition:var(--transition);pointer-events:none}
+.floating-book.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.floating-book a{display:flex;align-items:center;gap:.6rem;background:var(--gold);color:var(--white);padding:.8rem 1.5rem;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;box-shadow:0 8px 30px rgba(197,165,114,.4)}
+.floating-book a:hover{background:var(--gold-dark);transform:translateY(-2px)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* MOBILE NAV */
+.mobile-menu{position:fixed;inset:0;z-index:999;background:rgba(26,26,26,.98);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:var(--transition)}
+.mobile-menu.open{opacity:1;pointer-events:auto}
+.mobile-menu a{font-family:var(--serif);font-size:1.6rem;color:var(--white)}
+.mobile-close{position:absolute;top:1.5rem;right:2rem;color:var(--white);font-size:2rem;cursor:pointer}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.nav-links{display:none}
+.hamburger{display:flex}
+.about-grid{grid-template-columns:1fr;gap:2rem}
+.price-columns{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.gallery-grid{grid-template-columns:repeat(3,1fr)}
+.gallery-grid a:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gallery-grid a:nth-child(5){grid-column:span 1}
+}
+@media(max-width:640px){
+section{padding:4rem 1.2rem}
+.gallery-grid{grid-template-columns:1fr 1fr}
+.gallery-grid a:nth-child(1){grid-column:span 2;grid-row:span 1}
+.gallery-grid a:nth-child(5){grid-column:span 1}
+.hero-buttons{flex-direction:column;align-items:center}
+.btn-outline{margin-left:0}
+.about-badges{flex-direction:column;gap:.8rem}
+.services-nav{gap:.5rem}
+.services-nav button{padding:.5rem 1rem;font-size:.7rem}
+.hero-bg-img{object-position:right 0%!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo"><img src="images/logo-new.svg" alt="Frisør & Wellness"></a>
+  <div class="nav-links">
+    <a href="#om">Om os</a>
+    <a href="#galleri">Galleri</a>
+    <a href="#priser">Priser</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank" class="nav-book">Book tid</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">✕</span>
+  <a href="#om" onclick="closeMobile()">Om os</a>
+  <a href="#galleri" onclick="closeMobile()">Galleri</a>
+  <a href="#priser" onclick="closeMobile()">Priser</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+  <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank" class="btn btn-gold">Book tid</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img class="hero-bg-img active" src="images/img19.jpg" alt="Hårkunst" style="object-position:center 0%">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">DM & VM deltagere i frisørkonkurrencer</span>
+    <h1>Frisør <em>&</em> Wellness</h1>
+    <p class="hero-sub">Viborgs foretrukne salon for hår, skønhed og velvære. Professionel service i en afslappet atmosfære.</p>
+    <div class="hero-buttons">
+      <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank" class="btn btn-gold">Book tid online</a>
+      <a href="#priser" class="btn btn-outline">Se priser</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll<span></span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="om">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <img src="images/img02.jpg" alt="Salon">
+        <img src="images/img03.jpg" alt="Hårarbejde">
+        <img src="images/img04.jpg" alt="Salon interiør">
+      </div>
+      <div class="about-text reveal">
+        <span class="section-label">Om os</span>
+        <h3>Velkommen hos Høeg</h3>
+        <p>Hos Frisør & Wellness på Randersvej i Viborg får du meget mere end bare en klipning. Vi er en fuldservice salon, der tilbyder alt fra frisørbehandlinger i topklasse til fodterapi, massage, og kropsbehandlinger.</p>
+        <p>Vores frisører deltager i DM og VM i frisørkonkurrencer — fordi vi elsker vores fag og altid stræber efter det ypperste. Vi skaber resultater, du kan være stolt af.</p>
+        <p>Og ja — alle børn får en slikkepind. 🍭</p>
+        <div class="about-badges">
+          <div class="about-badge">
+            <span class="num">DM/VM</span>
+            <span class="label">Konkurrence&shy;deltagere</span>
+          </div>
+          <div class="about-badge">
+            <span class="num">6</span>
+            <span class="label">Dage om ugen</span>
+          </div>
+          <div class="about-badge">
+            <span class="num">Full</span>
+            <span class="label">Service salon</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galleri">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Galleri</span>
+      <h2 class="section-title">Vores arbejde</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="gallery-grid reveal">
+      <a href="images/img06.jpg" class="gallery-item"><img src="images/img06.jpg" alt="Galleri"></a>
+      <a href="images/img07.jpg" class="gallery-item"><img src="images/img07.jpg" alt="Galleri"></a>
+      <a href="images/img08.jpg" class="gallery-item"><img src="images/img08.jpg" alt="Galleri"></a>
+      <a href="images/img10.jpg" class="gallery-item"><img src="images/img10.jpg" alt="Galleri"></a>
+      <a href="images/img11.jpg" class="gallery-item"><img src="images/img11.jpg" alt="Galleri"></a>
+      <a href="images/img12.jpg" class="gallery-item"><img src="images/img12.jpg" alt="Galleri"></a>
+      <a href="images/img13.jpg" class="gallery-item"><img src="images/img13.jpg" alt="Galleri"></a>
+      <a href="images/img14.jpg" class="gallery-item"><img src="images/img14.jpg" alt="Galleri"></a>
+      <a href="images/img15.jpg" class="gallery-item"><img src="images/img15.jpg" alt="Galleri"></a>
+      <a href="images/img16.jpg" class="gallery-item"><img src="images/img16.jpg" alt="Galleri"></a>
+      <a href="images/img17.jpg" class="gallery-item"><img src="images/img17.jpg" alt="Galleri"></a>
+      <a href="images/img18.jpg" class="gallery-item"><img src="images/img18.jpg" alt="Galleri"></a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="priser">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Services & priser</span>
+      <h2 class="section-title">Vores behandlinger</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="reveal">
+      <div class="services-nav">
+        <button class="active" onclick="showCategory('frisor',this)">Frisør</button>
+        <button onclick="showCategory('farve',this)">Farve & Reflekser</button>
+        <button onclick="showCategory('styling',this)">Styling & Ekstra</button>
+        <button onclick="showCategory('fod',this)">Fodterapi</button>
+        <button onclick="showCategory('wellness',this)">Wellness</button>
+        <button onclick="showCategory('voks',this)">Hårfjerning</button>
+      </div>
+
+      <!-- FRISØR -->
+      <div class="price-category active" id="cat-frisor">
+        <div class="price-columns">
+          <div class="price-group">
+            <div class="price-group-title">Dameklip</div>
+            <div class="price-item"><span class="price-name">Dameklip Assistent</span><span class="price-dots"></span><span class="price-value">fra 495,-</span></div>
+            <div class="price-item"><span class="price-name">Pensionist klip</span><span class="price-dots"></span><span class="price-value">fra 426,-</span></div>
+          </div>
+          <div class="price-group">
+            <div class="price-group-title">Herreklip</div>
+            <div class="price-item"><span class="price-name">Herre klip Assistent</span><span class="price-dots"></span><span class="price-value">fra 415,-</span></div>
+            <div class="price-item"><span class="price-name">Pensionist Herreklip</span><span class="price-dots"></span><span class="price-value">fra 360,-</span></div>
+            <div class="price-item"><span class="price-name">Skæg klip</span><span class="price-dots"></span><span class="price-value">fra 255,-</span></div>
+          </div>
+        </div>
+        <p style="text-align:center;font-size:.85rem;color:var(--charcoal-light);margin-top:1rem;font-style:italic">Alle klip inkl. vask og let tør</p>
+      </div>
+
+      <!-- FARVE -->
+      <div class="price-category" id="cat-farve">
+        <div class="price-columns">
+          <div class="price-group">
+            <div class="price-group-title">Farvning</div>
+            <div class="price-item"><span class="price-name">Farve i bund</span><span class="price-dots"></span><span class="price-value">fra 563,-</span></div>
+            <div class="price-item"><span class="price-name">Farve Kort hår</span><span class="price-dots"></span><span class="price-value">fra 573,-</span></div>
+            <div class="price-item"><span class="price-name">Farve Mellem</span><span class="price-dots"></span><span class="price-value">fra 811,-</span></div>
+            <div class="price-item"><span class="price-name">Farve Langt</span><span class="price-dots"></span><span class="price-value">fra 1.109,-</span></div>
+            <div class="price-item"><span class="price-name">2-3 klangs Farve</span><span class="price-dots"></span><span class="price-value">fra 936,-</span></div>
+            <div class="price-item"><span class="price-name">Solskins lysning</span><span class="price-dots"></span><span class="price-value">fra 295,-</span></div>
+            <div class="price-item"><span class="price-name">Tonings Farve</span><span class="price-dots"></span><span class="price-value">fra 416,-</span></div>
+          </div>
+          <div class="price-group">
+            <div class="price-group-title">Reflekser & Balayage</div>
+            <div class="price-item"><span class="price-name">Reflekser M/HAT</span><span class="price-dots"></span><span class="price-value">fra 557,-</span></div>
+            <div class="price-item"><span class="price-name">Babylights M/FOLIE</span><span class="price-dots"></span><span class="price-value">fra 585,-</span></div>
+            <div class="price-item"><span class="price-name">Balayage mellem til langt hår</span><span class="price-dots"></span><span class="price-value">fra 1.450,-</span></div>
+          </div>
+        </div>
+        <div class="price-note">Der er mange refleks kombinationer, hårlængde og tykkelse, derfor kan prisen variere. Spørg gerne inden vi går igang, så du er tryg omkring dette.</div>
+      </div>
+
+      <!-- STYLING -->
+      <div class="price-category" id="cat-styling">
+        <div class="price-columns">
+          <div class="price-group">
+            <div class="price-group-title">Permanent & Behandling</div>
+            <div class="price-item"><span class="price-name">Permanent inkl. klip</span><span class="price-dots"></span><span class="price-value">fra 990,-</span></div>
+            <div class="price-item"><span class="price-name">Pensionist permanent inkl. klip & W</span><span class="price-dots"></span><span class="price-value">fra 936,-</span></div>
+            <div class="price-item"><span class="price-name">Scrub</span><span class="price-dots"></span><span class="price-value">fra 49,-</span></div>
+            <div class="price-item"><span class="price-name">Kur behandlinger & Ritual</span><span class="price-dots"></span><span class="price-value">fra 192,-</span></div>
+          </div>
+          <div class="price-group">
+            <div class="price-group-title">Opsætning & Ekstra</div>
+            <div class="price-item"><span class="price-name">Bryn & Vipper</span><span class="price-dots"></span><span class="price-value">230,-</span></div>
+            <div class="price-item"><span class="price-name">Ret M/VOKS</span><span class="price-dots"></span><span class="price-value">fra 113,-</span></div>
+            <div class="price-item"><span class="price-name">Opsæt Galla/Brud inkl. prøveopsæt</span><span class="price-dots"></span><span class="price-value">fra 1.558,-</span></div>
+            <div class="price-item"><span class="price-name">Konfirmant opsæt</span><span class="price-dots"></span><span class="price-value">fra 1.250,-</span></div>
+            <div class="price-item"><span class="price-name">Formtørring</span><span class="price-dots"></span><span class="price-value">fra 433,-</span></div>
+            <div class="price-item"><span class="price-name">Vask vandondulation</span><span class="price-dots"></span><span class="price-value">fra 422,-</span></div>
+            <div class="price-item"><span class="price-name">Make-up</span><span class="price-dots"></span><span class="price-value">fra 389,-</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FODTERAPI -->
+      <div class="price-category" id="cat-fod">
+        <div class="price-group">
+          <div class="price-group-title">Statsautoriseret Fodterapeut — Signe Sejbjerg</div>
+          <div class="price-item"><span class="price-name">Fodbehandling Alm.</span><span class="price-dots"></span><span class="price-value">410,-</span></div>
+          <div class="price-item"><span class="price-name">Lak</span><span class="price-dots"></span><span class="price-value">fra 115,-</span></div>
+          <div class="price-item"><span class="price-name">Fodbehandling inkl. Shellac</span><span class="price-dots"></span><span class="price-value">fra 680,-</span></div>
+        </div>
+      </div>
+
+      <!-- WELLNESS -->
+      <div class="price-category" id="cat-wellness">
+        <div class="price-columns">
+          <div class="price-group">
+            <div class="price-group-title">Ultratone — Slanke & Opstramning</div>
+            <div class="price-item"><span class="price-name">1 × behandling</span><span class="price-dots"></span><span class="price-value">487,-</span></div>
+            <div class="price-item"><span class="price-name">4 × behandlinger</span><span class="price-dots"></span><span class="price-value">1.456,-</span></div>
+            <div class="price-item"><span class="price-name">8 × behandlinger</span><span class="price-dots"></span><span class="price-value">2.600,-</span></div>
+            <div class="price-item"><span class="price-name">Ultralyd</span><span class="price-dots"></span><span class="price-value">fra 203,-</span></div>
+          </div>
+          <div class="price-group">
+            <div class="price-group-title">Massage</div>
+            <div class="price-item"><span class="price-name">½ krop</span><span class="price-dots"></span><span class="price-value">fra 518,-</span></div>
+            <div class="price-item"><span class="price-name">Helkropsmassage inkl. peeling</span><span class="price-dots"></span><span class="price-value">fra 860,-</span></div>
+            <div class="price-item"><span class="price-name">HotStone massage inkl. peeling</span><span class="price-dots"></span><span class="price-value">fra 946,-</span></div>
+            <div class="price-item"><span class="price-name">Ansigts Massage</span><span class="price-dots"></span><span class="price-value">fra 524,-</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HÅRFJERNING -->
+      <div class="price-category" id="cat-voks">
+        <div class="price-group">
+          <div class="price-group-title">Hårfjerning M/Varmvoks</div>
+          <div class="price-item"><span class="price-name">Bryn</span><span class="price-dots"></span><span class="price-value">fra 113,-</span></div>
+          <div class="price-item"><span class="price-name">Overlæbe el. hage</span><span class="price-dots"></span><span class="price-value">fra 146,-</span></div>
+          <div class="price-item"><span class="price-name">Underben</span><span class="price-dots"></span><span class="price-value">fra 308,-</span></div>
+        </div>
+        <div class="price-note">Der er flere muligheder — spørg os!</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank" class="btn btn-gold">Book tid online</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Kontakt</span>
+      <h2 class="section-title">Find os</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>Kom forbi</h3>
+        <div class="contact-detail">
+          <div class="icon">📍</div>
+          <div class="text"><strong>Adresse</strong>Randersvej 66F<br>8800 Viborg</div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">📞</div>
+          <div class="text"><strong>Telefon</strong><a href="tel:86673630" style="color:var(--gold-light)">86 67 36 30</a></div>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">✉</div>
+          <div class="text"><strong>Email</strong><a href="mailto:hos.hoeg.randersvej@hairtools.dk" style="color:var(--gold-light)">hos.hoeg.randersvej@hairtools.dk</a></div>
+        </div>
+        <h3 style="margin-top:2.5rem">Åbningstider</h3>
+        <div class="hours-grid">
+          <span class="day">Mandag</span><span class="time">9:00 – 17:30</span>
+          <span class="day">Tirsdag</span><span class="time">9:00 – 17:30</span>
+          <span class="day">Onsdag</span><span class="time">9:00 – 19:00</span>
+          <span class="day">Torsdag</span><span class="time">9:00 – 19:00</span>
+          <span class="day">Fredag</span><span class="time">9:00 – 17:00</span>
+          <span class="day">Lørdag</span><span class="time">8:00 – 12:00</span>
+          <span class="day">Søndag</span><span class="time">Lukket</span>
+        </div>
+        <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank" class="btn btn-gold" style="margin-top:2rem">Book tid online</a>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2222.5!2d9.4088!3d56.4532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464b3da1a0d8c0ed%3A0x0!2sRandersvej+66F%2C+8800+Viborg!5e0!3m2!1sda!2sdk!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 Frisør & Wellness — Hos Høeg · Randersvej 66F, 8800 Viborg · <a href="tel:86673630" style="color:var(--gold)">86 67 36 30</a></p>
+</footer>
+
+<!-- FLOATING BOOK BUTTON -->
+<div class="floating-book" id="floatingBook">
+  <a href="https://salonbook.one/?hos.hoeg.randersvej" target="_blank">📅 Book tid</a>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+  <span class="lightbox-close">✕</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+const fb=document.getElementById('floatingBook');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  fb.classList.toggle('visible',window.scrollY>600);
+});
+
+// Mobile menu
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+const mobileClose=document.getElementById('mobileClose');
+hamburger.addEventListener('click',()=>mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+function closeMobile(){mobileMenu.classList.remove('open')}
+
+// Service tabs
+function showCategory(id,btn){
+  document.querySelectorAll('.price-category').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.services-nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('cat-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Gallery lightbox
+document.querySelectorAll('.gallery-item').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    document.getElementById('lightboxImg').src=a.href;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+
+// Reveal on scroll
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Static hero - no slideshow
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="50%" style="stop-color:#d4a847"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:transparent"/>
+      <stop offset="15%" style="stop-color:#d4a847"/>
+      <stop offset="85%" style="stop-color:#d4a847"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main text -->
+  <text x="200" y="45" text-anchor="middle" font-family="'Playfair Display', 'Georgia', serif" font-size="32" font-weight="400" letter-spacing="3" fill="#2c2c2c">
+    FRISØR <tspan fill="url(#gold)">&amp;</tspan> WELLNESS
+  </text>
+  
+  <!-- Decorative line -->
+  <line x1="80" y1="58" x2="320" y2="58" stroke="url(#goldLine)" stroke-width="0.8"/>
+  
+  <!-- Scissors icon - left of VIBORG -->
+  <g transform="translate(85, 62) scale(0.45)" fill="none" stroke="url(#gold)" stroke-width="2.2" stroke-linecap="round">
+    <ellipse cx="8" cy="38" rx="7" ry="7"/>
+    <ellipse cx="32" cy="38" rx="7" ry="7"/>
+    <line x1="13" y1="33" x2="27" y2="12"/>
+    <line x1="27" y1="33" x2="13" y2="12"/>
+    <line x1="20" y1="18" x2="20" y2="0"/>
+    <circle cx="20" cy="22" r="2" fill="url(#gold)"/>
+  </g>
+  
+  <!-- Tagline -->
+  <text x="210" y="78" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="10" letter-spacing="4" fill="#8a7d6b">
+    VIBORG  ·  HOS HØEG
+  </text>
+  
+  <!-- Bottom accent line -->
+  <line x1="170" y1="90" x2="230" y2="90" stroke="url(#goldLine)" stroke-width="0.5"/>
+</svg>
