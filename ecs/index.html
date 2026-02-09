@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E. Christiansen & Søn — Tømrer- og Murerfirma i Odense</title>
+<meta name="description" content="Totalentreprise, tømrer og murer med 40+ års erfaring på Fyn. Nybyggeri, renovering, tag, facade og tilbygning. Kontakt os i dag.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--green:#2D5A3D;--green-dark:#1E3F2B;--green-light:#3A7250;
+--sand:#F5F0E8;--sand-dark:#E8E0D0;--white:#FFFFFF;
+--text:#2C2C2C;--text-light:#5A5A5A;
+--font-body:'Inter',sans-serif;--font-head:'DM Serif Display',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;background:var(--white);box-shadow:0 1px 8px rgba(0,0,0,.08);transition:background .3s}
+nav .container{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:var(--font-head);font-size:1.35rem;color:var(--green)}
+.logo span{color:var(--green-light);font-family:var(--font-body);font-size:.75rem;display:block;letter-spacing:.5px;margin-top:-2px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--text);transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:var(--white)!important;padding:10px 22px;border-radius:6px;font-weight:600;transition:background .2s}
+.nav-cta:hover{background:var(--green-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:26px;height:2.5px;background:var(--green);border-radius:2px;transition:transform .3s,opacity .3s}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+.nav-links{position:fixed;top:72px;left:0;width:100%;background:var(--white);flex-direction:column;padding:24px;gap:20px;box-shadow:0 4px 12px rgba(0,0,0,.1);transform:translateY(-120%);transition:transform .3s;z-index:99}
+.nav-links.open{transform:translateY(0)}
+.hamburger{display:flex}
+}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 60%,var(--green-light) 100%);color:var(--white);padding:160px 0 100px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:80px;background:var(--sand);clip-path:polygon(0 60%,100% 0,100% 100%,0 100%)}
+.hero-content{max-width:680px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:600;letter-spacing:.5px;margin-bottom:24px;backdrop-filter:blur(4px)}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.15;margin-bottom:20px}
+.hero p{font-size:1.15rem;opacity:.9;margin-bottom:36px;max-width:560px}
+.btn{display:inline-block;padding:14px 32px;border-radius:6px;font-weight:600;font-size:.95rem;transition:all .2s;cursor:pointer;border:none}
+.btn-white{background:var(--white);color:var(--green)}
+.btn-white:hover{background:var(--sand);transform:translateY(-1px)}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-dark)}
+.btn-outline{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn-outline:hover{background:var(--green);color:var(--white)}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+
+/* STATS */
+.stats{background:var(--sand);padding:48px 0 64px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-num{font-family:var(--font-head);font-size:2.6rem;color:var(--green);line-height:1}
+.stat-label{font-size:.85rem;color:var(--text-light);margin-top:6px}
+
+/* SECTIONS */
+section{padding:80px 0}
+.section-tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);background:rgba(45,90,61,.08);padding:5px 14px;border-radius:20px;margin-bottom:12px}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:16px;color:var(--text)}
+.section-desc{color:var(--text-light);max-width:600px;margin-bottom:48px;font-size:1.05rem}
+
+/* OM OS */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{background:var(--sand-dark);border-radius:12px;height:380px;display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:.9rem;position:relative;overflow:hidden}
+.about-img::before{content:'🏗️';font-size:4rem;opacity:.3}
+.about-text h3{font-family:var(--font-head);font-size:1.3rem;margin:20px 0 8px;color:var(--green-dark)}
+.about-text p{color:var(--text-light);margin-bottom:12px}
+
+/* YDELSER */
+.services{background:var(--sand)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--white);border-radius:12px;padding:36px 28px;transition:transform .2s,box-shadow .2s}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.service-icon{width:56px;height:56px;background:rgba(45,90,61,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:18px}
+.service-card h3{font-family:var(--font-head);font-size:1.2rem;margin-bottom:10px}
+.service-card p{color:var(--text-light);font-size:.9rem;line-height:1.6}
+
+/* PROJEKTER */
+.projects{background:var(--white)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.project-card{border-radius:12px;overflow:hidden;position:relative;height:280px;background:var(--sand-dark);display:flex;align-items:flex-end}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(30,63,43,.85) 0%,transparent 60%);z-index:1}
+.project-overlay{position:relative;z-index:2;padding:24px;color:var(--white);width:100%}
+.project-overlay h3{font-family:var(--font-head);font-size:1.15rem;margin-bottom:4px}
+.project-overlay span{font-size:.8rem;opacity:.8}
+.project-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;opacity:.15}
+
+/* HVORFOR */
+.why{background:var(--green);color:var(--white);position:relative}
+.why .section-tag{background:rgba(255,255,255,.15);color:var(--white)}
+.why .section-title{color:var(--white)}
+.why .section-desc{color:rgba(255,255,255,.8)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.why-card{background:rgba(255,255,255,.08);border-radius:12px;padding:28px;backdrop-filter:blur(4px)}
+.why-card h3{font-family:var(--font-head);font-size:1.1rem;margin-bottom:8px}
+.why-card p{font-size:.9rem;opacity:.85;line-height:1.6}
+.why-num{font-family:var(--font-head);font-size:2rem;opacity:.3;margin-bottom:8px}
+
+/* KONTAKT */
+.contact{background:var(--sand)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact-info h3{font-family:var(--font-head);font-size:1.5rem;margin-bottom:20px}
+.contact-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px}
+.contact-icon{width:44px;height:44px;background:var(--green);color:var(--white);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item strong{display:block;font-size:.85rem;color:var(--text-light);margin-bottom:2px;font-weight:500}
+.contact-item span{font-size:1rem;color:var(--text)}
+.contact-item a{color:var(--green);font-weight:500}
+.map-wrap{border-radius:12px;overflow:hidden;height:100%;min-height:360px}
+.map-wrap iframe{width:100%;height:100%;border:0}
+
+/* FOOTER */
+footer{background:var(--green-dark);color:rgba(255,255,255,.7);padding:48px 0 28px;font-size:.85rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-logo{font-family:var(--font-head);font-size:1.2rem;color:var(--white);margin-bottom:10px}
+footer h4{color:var(--white);font-size:.9rem;margin-bottom:14px;font-weight:600}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-badges{display:flex;gap:16px;align-items:center}
+.footer-badges a{opacity:.7;transition:opacity .2s}
+.footer-badges a:hover{opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+.services-grid,.projects-grid{grid-template-columns:repeat(2,1fr)}
+.about-grid,.contact-grid,.why-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.services-grid,.projects-grid{grid-template-columns:1fr}
+.stats-grid{grid-template-columns:repeat(2,1fr)}
+.hero{padding:130px 0 80px}
+.footer-grid{grid-template-columns:1fr}
+section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="container">
+<a href="#" class="logo">E. Christiansen & Søn<span>Tømrer- og Murerfirma ApS</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#om">Om os</a></li>
+<li><a href="#ydelser">Ydelser</a></li>
+<li><a href="#projekter">Projekter</a></li>
+<li><a href="#hvorfor">Hvorfor os</a></li>
+<li><a href="#kontakt" class="nav-cta">Kontakt os</a></li>
+</ul>
+<button class="hamburger" id="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open');this.classList.toggle('active')">
+<span></span><span></span><span></span>
+</button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<div class="hero-badge">✦ Mere end 40 års erfaring på Fyn</div>
+<h1>En stærk spiller i byggebranchen</h1>
+<p>Vi er jeres idémager med optimale løsninger og den rette rådgivning indenfor renoveringer og totalentrepriser — fra idéfasen til slutresultatet.</p>
+<div class="hero-buttons">
+<a href="#kontakt" class="btn btn-white">Få et uforpligtende tilbud</a>
+<a href="tel:66176464" class="btn" style="background:rgba(255,255,255,.15);color:#fff;backdrop-filter:blur(4px)">Ring 66 17 64 64</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+<div class="container">
+<div class="stats-grid">
+<div><div class="stat-num">40+</div><div class="stat-label">Års erfaring</div></div>
+<div><div class="stat-num">18</div><div class="stat-label">Dygtige medarbejdere</div></div>
+<div><div class="stat-num">1000+</div><div class="stat-label">Gennemførte projekter</div></div>
+<div><div class="stat-num">100%</div><div class="stat-label">Fokus på kvalitet</div></div>
+</div>
+</div>
+</div>
+
+<!-- OM OS -->
+<section class="about" id="om">
+<div class="container">
+<div class="about-grid">
+<div class="about-img"></div>
+<div class="about-text">
+<div class="section-tag">Om firmaet</div>
+<div class="section-title">Grundlagt af E. Christiansen — videreført med stolthed</div>
+<p>E. Christiansen & Søn Tømrer- og Murerfirma ApS er et alsidigt håndværkerfirma med rødder helt tilbage til starten af 1980'erne. I dag drives firmaet af Steen Ole Christiansen fra adressen på Byghøjvej 1 i Odense SV.</p>
+<h3>Totalentreprise fra idé til nøgle</h3>
+<p>Vi er kendte for at være rigtig gode til at arbejde med den indledende idéfase. I samarbejde med vores tilknyttede arkitektfirma kan vi hjælpe med at visualisere jeres idéer — også i 3D.</p>
+<h3>Dialog og kvalitet</h3>
+<p>Vi lægger stor vægt på dialog og vejledning fra start til slut, så vi er sikre på at afstemme forventninger, drømme og ønsker til resultatet. Med 18 dygtige medarbejdere — herunder formændene Morten Frandsen og Ole Jensen — varetager vi byggeprojekter på hele Fyn.</p>
+<a href="#kontakt" class="btn btn-green" style="margin-top:12px">Kontakt os i dag</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- YDELSER -->
+<section class="services" id="ydelser">
+<div class="container">
+<div class="section-tag">Vores ydelser</div>
+<div class="section-title">Alt inden for tømrer, murer og totalentreprise</div>
+<p class="section-desc">Med mere end 40 års erfaring i branchen ved vi, hvad der skal til for at jeres drømme bliver til virkelighed — uden at gå på kompromis med kvaliteten.</p>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon">🪵</div>
+<h3>Tømrerarbejde</h3>
+<p>Alt inden for tømrerarbejde — fra ganske almindelige opgaver til de helt store projekter. Vi tilbyder optimale løsninger uanset opgavens omfang.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🧱</div>
+<h3>Murerarbejde</h3>
+<p>Dygtige murere med god planlægning og svende der har nøje kendskab til korrekt udførsel. Alle opgaver udføres med præcision og omhu.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🏠</div>
+<h3>Totalentreprise</h3>
+<p>Vi varetager totalentrepriser over hele Fyn. Fra idéfasen til slutresultatet er vi jeres professionelle samarbejdspartner med kreative løsningsforslag.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🏗️</div>
+<h3>Nyt tag &amp; tagrenovering</h3>
+<p>Vores dygtige tømrere hjælper med at få lagt nyt tag på hus, sommerhus, garage eller tilbygning. Professionelt og holdbart.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🏢</div>
+<h3>Facaderenovering</h3>
+<p>Overstrygning, understrygning og komplet facaderenovering. Vi giver jeres ejendom et nyt og flot udtryk med holdbare materialer.</p>
+</div>
+<div class="service-card">
+<div class="service-icon">🚪</div>
+<h3>Døre, vinduer &amp; specialopgaver</h3>
+<p>Udskiftning og renovering af døre og vinduer — også i helt specielle mål. Vi udfører desuden arkitekttegnede huse og unikke specialopgaver.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROJEKTER -->
+<section class="projects" id="projekter">
+<div class="container">
+<div class="section-tag">Udvalgte projekter</div>
+<div class="section-title">Et udpluk af vores arbejde</div>
+<p class="section-desc">Vi samler på tilfredse kunder. Her er et udpluk af de mange byggeprojekter vi har gennemført på Fyn.</p>
+<div class="projects-grid">
+<div class="project-card" style="background:linear-gradient(135deg,#8BA888,#5A7A5E)">
+<div class="project-placeholder">🏡</div>
+<div class="project-overlay"><h3>Totalrenovering, Odense</h3><span>Totalentreprise</span></div>
+</div>
+<div class="project-card" style="background:linear-gradient(135deg,#A89888,#7A6A5E)">
+<div class="project-placeholder">🏗️</div>
+<div class="project-overlay"><h3>Nybyggeri, Middelfart</h3><span>Nybyggeri</span></div>
+</div>
+<div class="project-card" style="background:linear-gradient(135deg,#889AA8,#5E6A7A)">
+<div class="project-placeholder">🏠</div>
+<div class="project-overlay"><h3>Tilbygning, Odense SV</h3><span>Tilbygning &amp; tømrer</span></div>
+</div>
+<div class="project-card" style="background:linear-gradient(135deg,#A8A088,#7A7460)">
+<div class="project-placeholder">🔨</div>
+<div class="project-overlay"><h3>Tagrenovering, Fyn</h3><span>Nyt tag</span></div>
+</div>
+<div class="project-card" style="background:linear-gradient(135deg,#88A898,#5A7A6A)">
+<div class="project-placeholder">🧱</div>
+<div class="project-overlay"><h3>Facaderenovering</h3><span>Murerarbejde</span></div>
+</div>
+<div class="project-card" style="background:linear-gradient(135deg,#9A8EA8,#6A5E7A)">
+<div class="project-placeholder">🏢</div>
+<div class="project-overlay"><h3>Erhvervsbyggeri, Fyn</h3><span>Totalentreprise</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- HVORFOR -->
+<section class="why" id="hvorfor">
+<div class="container">
+<div class="section-tag">Hvorfor vælge os</div>
+<div class="section-title">Derfor er vi det rigtige valg</div>
+<p class="section-desc">Vi er idémagerne i projektfasen — men samtidig dem der udfører arbejdet. Derfor ved vi præcis, hvordan opgaven skal udføres.</p>
+<div class="why-grid">
+<div class="why-card">
+<div class="why-num">01</div>
+<h3>40+ års erfaring</h3>
+<p>Med mere end fire årtiers erfaring i byggebranchen har vi opbygget en uvurderlig viden og ekspertise inden for alle typer byggeprojekter.</p>
+</div>
+<div class="why-card">
+<div class="why-num">02</div>
+<h3>Fra idé til virkelighed</h3>
+<p>Vi er med fra idéfasen til slutresultatet. I samarbejde med tilknyttet arkitektfirma visualiserer vi jeres drømme — også i 3D.</p>
+</div>
+<div class="why-card">
+<div class="why-num">03</div>
+<h3>Dialog og tryghed</h3>
+<p>Vi lægger stor vægt på løbende dialog og vejledning, så forventninger, drømme og ønsker er afstemt fra start til slut.</p>
+</div>
+<div class="why-card">
+<div class="why-num">04</div>
+<h3>Medlem af BYGgaranti</h3>
+<p>Vi er medlem af BYGgaranti, hvilket giver jer ekstra sikkerhed og tryghed ved at vælge os som jeres håndværker.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+<div class="container">
+<div class="section-tag">Kontakt</div>
+<div class="section-title">Lad os tale om jeres projekt</div>
+<p class="section-desc">Har I spørgsmål, eller ønsker I et godt, uforpligtende tilbud? Kontakt os i dag.</p>
+<div class="contact-grid">
+<div class="contact-info">
+<h3>E. Christiansen &amp; Søn<br>Tømrer- og Murerfirma ApS</h3>
+<div class="contact-item">
+<div class="contact-icon">📍</div>
+<div><strong>Adresse</strong><span>Byghøjvej 1, 5250 Odense SV</span></div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">📞</div>
+<div><strong>Telefon</strong><a href="tel:66176464">66 17 64 64</a></div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">✉️</div>
+<div><strong>Email</strong><a href="mailto:steen@ecs.dk">steen@ecs.dk</a></div>
+</div>
+<div class="contact-item">
+<div class="contact-icon">🏢</div>
+<div><strong>CVR</strong><span>25691121</span></div>
+</div>
+<div style="margin-top:20px;display:flex;gap:12px">
+<a href="https://www.facebook.com/E-Christiansen-S%C3%B8n-T%C3%B8mrer-og-Murerfirma-ApS-218647751872804/" target="_blank" class="btn btn-outline" style="font-size:.85rem;padding:10px 18px">Facebook</a>
+<a href="https://www.byggaranti.dk/" target="_blank" class="btn btn-outline" style="font-size:.85rem;padding:10px 18px">BYGgaranti</a>
+</div>
+</div>
+<div class="map-wrap">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.5!2d10.348!3d55.378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464cdab1a3c9e8e5%3A0x0!2sBygh%C3%B8jvej%201%2C%205250%20Odense%20SV!5e0!3m2!1sda!2sdk!4v1700000000000!5m2!1sda!2sdk" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">E. Christiansen & Søn</div>
+<p>Tømrer- og murerfirma med mere end 40 års erfaring. Vi udfører totalentrepriser, renoveringer og alt inden for tømrer- og murerarbejde på Fyn.</p>
+</div>
+<div>
+<h4>Ydelser</h4>
+<ul>
+<li><a href="#ydelser">Tømrerarbejde</a></li>
+<li><a href="#ydelser">Murerarbejde</a></li>
+<li><a href="#ydelser">Totalentreprise</a></li>
+<li><a href="#ydelser">Tagrenovering</a></li>
+<li><a href="#ydelser">Facaderenovering</a></li>
+<li><a href="#ydelser">Døre &amp; vinduer</a></li>
+</ul>
+</div>
+<div>
+<h4>Kontakt</h4>
+<ul>
+<li>Byghøjvej 1</li>
+<li>5250 Odense SV</li>
+<li><a href="tel:66176464">66 17 64 64</a></li>
+<li><a href="mailto:steen@ecs.dk">steen@ecs.dk</a></li>
+<li>CVR: 25691121</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>&copy; 2025 E. Christiansen &amp; Søn Tømrer- og Murerfirma ApS. Alle rettigheder forbeholdes.</span>
+<div class="footer-badges">
+<a href="https://www.byggaranti.dk/" target="_blank">Medlem af BYGgaranti</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+document.getElementById('navLinks').classList.remove('open');
+}));
+</script>
+</body>
+</html>
