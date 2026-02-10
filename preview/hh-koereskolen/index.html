@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HH-Køreskolen — Kørekort i Fredericia & Trekantområdet</title>
+    <meta name="description" content="HH-Køreskolen ved Henrik Helios — din erfarne kørelærer i Fredericia, Vejle, Kolding og Børkop. Over 40 års erfaring. Tag kørekort med tryghed.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --navy-light: #2D4270;
+            --navy-dark: #0F1B33;
+            --road: #3498DB;
+            --road-light: #D6EAF8;
+            --signal: #2ECC71;
+            --signal-dark: #27AE60;
+            --amber: #F1C40F;
+            --white: #FAFCFD;
+            --gray-50: #F5F7FA;
+            --gray-100: #E8ECF0;
+            --gray-200: #D1D8E0;
+            --gray-500: #6B7A8D;
+            --gray-700: #3D4F5F;
+            --gray-900: #1A2332;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-height: 1.2; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .preview-banner {
+            background: var(--signal);
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .preview-banner a { color: #fff; text-decoration: underline; font-weight: 600; }
+
+        nav {
+            background: var(--navy-dark);
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo .icon { color: var(--signal); font-size: 1.4rem; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--signal); }
+        .nav-cta {
+            background: var(--signal);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--signal-dark); }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-light) 100%);
+            padding: 100px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(46,204,113,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text { color: #fff; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--road-light);
+            margin-bottom: 24px;
+        }
+        .hero h1 { font-size: 2.7rem; line-height: 1.15; margin-bottom: 20px; }
+        .hero h1 span { color: var(--signal); }
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 32px;
+            max-width: 480px;
+            line-height: 1.8;
+        }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--signal);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover { background: var(--signal-dark); transform: translateY(-1px); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--amber);
+            display: block;
+        }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+        .services { padding: 90px 24px; background: var(--gray-50); }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .section-tag {
+            display: inline-block;
+            background: var(--road-light);
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        .section-header h2 { font-size: 2.2rem; color: var(--navy-dark); }
+        .section-header p { color: var(--gray-500); max-width: 520px; margin: 12px auto 0; }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 28px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,42,74,0.08); }
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--road-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--navy-dark); }
+        .service-card p { color: var(--gray-500); font-size: 0.92rem; line-height: 1.7; }
+
+        .trust { padding: 70px 24px; background: var(--navy-dark); color: #fff; text-align: center; }
+        .trust-grid {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .trust-item .trust-icon { font-size: 2.2rem; margin-bottom: 12px; }
+        .trust-item h4 { font-size: 1rem; margin-bottom: 6px; }
+        .trust-item p { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+        .about { padding: 90px 24px; }
+        .about-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            background: linear-gradient(135deg, var(--road-light) 0%, var(--gray-100) 100%);
+            border-radius: 20px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .about h2 { font-size: 2rem; color: var(--navy-dark); margin-bottom: 16px; }
+        .about p { color: var(--gray-500); margin-bottom: 14px; }
+        .about-facts { display: flex; gap: 32px; margin-top: 24px; }
+        .about-fact { text-align: center; }
+        .about-fact strong {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+        }
+        .about-fact span { font-size: 0.82rem; color: var(--gray-500); }
+
+        .process { padding: 90px 24px; background: var(--gray-50); }
+        .steps {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .step {
+            text-align: center;
+            padding: 32px 16px;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--gray-100);
+        }
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background: var(--signal);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 16px;
+        }
+        .step h4 { font-size: 1rem; margin-bottom: 8px; color: var(--navy-dark); }
+        .step p { font-size: 0.85rem; color: var(--gray-500); }
+
+        .contact { padding: 90px 24px; }
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info h2 { font-size: 2rem; color: var(--navy-dark); margin-bottom: 12px; }
+        .contact-info > p { color: var(--gray-500); margin-bottom: 32px; }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .contact-detail .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--road-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-detail strong { display: block; font-size: 0.92rem; }
+        .contact-detail span { color: var(--gray-500); font-size: 0.88rem; }
+        .contact-detail a { color: var(--navy); font-weight: 500; }
+
+        .contact-form {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 36px;
+            border: 1px solid var(--gray-100);
+        }
+        .contact-form h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--navy-dark); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; color: var(--gray-700); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--signal); }
+        .form-group textarea { height: 100px; resize: vertical; }
+        .form-submit {
+            background: var(--signal);
+            color: #fff;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .form-submit:hover { background: var(--signal-dark); }
+
+        footer {
+            background: var(--gray-900);
+            color: rgba(255,255,255,0.5);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer strong { color: #fff; }
+
+        @media (max-width: 768px) {
+            .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+            .about-image { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-banner">
+        🚗 Dette er et gratis redesign-forslag til HH-Køreskolen — <a href="https://andersschriver.com">Se mere på andersschriver.com</a>
+    </div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="icon">🚗</span> HH-Køreskolen
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Kørekort</a></li>
+                <li><a href="#process">Sådan gør vi</a></li>
+                <li><a href="#about">Om Henrik</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <a href="#contact" class="nav-cta">Tilmeld dig →</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge">🆕 Nu også automatgear!</div>
+                <h1>Tag dit <span>kørekort</span> i Fredericia</h1>
+                <p>HH-Køreskolen ved Henrik Helios. Over 40 års erfaring som kørelærer. Personlig undervisning der giver dig tryghed i trafikken.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-primary">🚗 Tilmeld dig nu</a>
+                    <a href="#services" class="btn-secondary">Se kørekort-typer</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">40+</span>
+                    <span class="stat-label">Års erfaring</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1982</span>
+                    <span class="stat-label">Startede som kørelærer</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Byer i Trekantområdet</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">★</span>
+                    <span class="stat-label">Personlig undervisning</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Kørekort-typer</span>
+            <h2>Hvilket kørekort skal du bruge?</h2>
+            <p>Vi tilbyder undervisning til flere kørekort-kategorier — altid med personlig vejledning.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3>Bil (Kat. B)</h3>
+                <p>Det klassiske bilkørekort. Manuel eller automatgear. Teori og praktisk undervisning tilpasset dit tempo.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Automatgear</h3>
+                <p>Nyt tilbud! Tag kørekort i bil med automatgear. Nemmere at lære, perfekt hvis du kun kører automatisk.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚛</div>
+                <h3>Trailer (Kat. BE)</h3>
+                <p>Udvid dit kørekort med trailer. Perfekt til campingvogn, hestetrailer eller arbejdsbrug.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Teoriundervisning</h3>
+                <p>Grundig teoriundervisning med erfaren underviser. Vi gør dig klar til teoriprøven.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛣️</div>
+                <h3>Praktisk kørsel</h3>
+                <p>Manøvrebane og vejkørsel i trekantområdet. Rolig og tryg stemning, så du lærer bedst muligt.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔄</div>
+                <h3>Genopfriskning</h3>
+                <p>Har du ikke kørt i et stykke tid? Vi hjælper dig trygt tilbage bag rattet med opfriskningslektioner.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process" id="process">
+        <div class="section-header">
+            <span class="section-tag">Sådan gør vi</span>
+            <h2>Din vej til kørekortet</h2>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h4>Tilmelding</h4>
+                <p>Kontakt os og tilmeld dig. Vi finder et forløb der passer dig.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h4>Teori</h4>
+                <p>Grundig teoriundervisning gør dig klar til prøven.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h4>Kørsel</h4>
+                <p>Praktisk kørsel i Fredericia og omegn. Vi øver til du er klar.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h4>Kørekort!</h4>
+                <p>Du består prøven og kører ud med dit nye kørekort. 🎉</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h2>Hvorfor vælge HH-Køreskolen?</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">👨‍🏫</div>
+                    <h4>40+ års erfaring</h4>
+                    <p>Henrik har undervist siden 1982 — du er i de bedste hænder.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🤝</div>
+                    <h4>Personlig undervisning</h4>
+                    <p>Lille køreskole med personlig kontakt. Du er ikke bare et nummer.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">📍</div>
+                    <h4>Lokal i Fredericia</h4>
+                    <p>Vi kender vejene og dækker hele trekantområdet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-image">🚗👨‍🏫</div>
+            <div>
+                <h2>Om Henrik Helios</h2>
+                <p>Henrik blev uddannet kørelærer i 1982 og startede umiddelbart derefter HH-Køreskolen. Med over 40 års erfaring har han hjulpet tusindvis af elever sikkert ud i trafikken.</p>
+                <p>Udover kørelæreruddannelsen har Henrik også kørt lastbil i flere år og arbejdet som underviser på EUC Lillebælt i over 28 år. Den kombination af praktisk erfaring og pædagogisk baggrund giver en undervisning i særklasse.</p>
+                <div class="about-facts">
+                    <div class="about-fact">
+                        <strong>1982</strong>
+                        <span>Kørelærer siden</span>
+                    </div>
+                    <div class="about-fact">
+                        <strong>28+</strong>
+                        <span>År på EUC Lillebælt</span>
+                    </div>
+                    <div class="about-fact">
+                        <strong>5</strong>
+                        <span>Byer dækket</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h2>Klar til at starte?</h2>
+                <p>Kontakt Henrik for at høre mere om kørekort, priser og opstart. Vi glæder os til at hjælpe dig!</p>
+
+                <div class="contact-detail">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Telefon</strong>
+                        <span>Se hh-koereskolen.dk for kontaktinfo</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Undervisningsbyer</strong>
+                        <span>Fredericia, Taulov, Bredstrup, Vejle, Kolding, Børkop</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">🌐</div>
+                    <div>
+                        <strong>Nuværende hjemmeside</strong>
+                        <a href="https://www.hh-koereskolen.dk" target="_blank">hh-koereskolen.dk</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Tilmeld dig eller stil et spørgsmål</h3>
+                <div class="form-group">
+                    <label>Navn</label>
+                    <input type="text" placeholder="Dit fulde navn">
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" placeholder="Dit telefonnummer">
+                </div>
+                <div class="form-group">
+                    <label>Kørekort-type</label>
+                    <select>
+                        <option value="">Vælg type...</option>
+                        <option>Bil (Kat. B) — Manuel</option>
+                        <option>Bil (Kat. B) — Automatgear</option>
+                        <option>Trailer (Kat. BE)</option>
+                        <option>Genopfriskning</option>
+                        <option>Andet / Ved ikke</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Besked</label>
+                    <textarea placeholder="Fortæl os lidt om hvad du leder efter..."></textarea>
+                </div>
+                <button class="form-submit">Send tilmelding →</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>HH-Køreskolen</strong> · v/ Henrik Helios · Fredericia & Trekantområdet</p>
+        <p style="margin-top: 8px;">© 2026 HH-Køreskolen — Alle rettigheder forbeholdes</p>
+    </footer>
+
+</body>
+</html>

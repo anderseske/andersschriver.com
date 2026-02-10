@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurt Mejers Auto — Autoværksted i Horsens | Hella Service Partner</title>
+    <meta name="description" content="Kurt Mejers Auto — dit lokale autoværksted i Horsens. Rallykører, mekaniker og Hella Service Partner. Service, reparation og syn på alle bilmærker.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #C41E3A;
+            --red-dark: #9E1830;
+            --red-light: #F0D0D6;
+            --carbon: #1C1C1E;
+            --carbon-light: #2C2C2E;
+            --steel: #48484A;
+            --silver: #8E8E93;
+            --light: #F5F5F7;
+            --white: #FAFAFA;
+            --accent: #FF6B35;
+            --accent-light: #FFE4D6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--carbon);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Banner */
+        .preview-banner {
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .preview-banner a { color: #fff; text-decoration: underline; font-weight: 700; }
+
+        /* Nav */
+        nav {
+            background: var(--carbon);
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo .flag { color: var(--red); }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--red); }
+        .nav-cta {
+            background: var(--red);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--red-dark); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(160deg, var(--carbon) 0%, var(--carbon-light) 50%, var(--steel) 100%);
+            padding: 90px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--red) 0%, var(--accent) 50%, var(--red) 100%);
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .hero-text { color: #fff; }
+        .hero-badges { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.8);
+        }
+        .badge.red { background: rgba(196,30,58,0.2); border-color: rgba(196,30,58,0.3); color: var(--red-light); }
+        .hero h1 { font-size: 2.7rem; margin-bottom: 18px; }
+        .hero h1 span { color: var(--red); }
+        .hero p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 32px;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-red:hover { background: var(--red-dark); transform: translateY(-1px); }
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.06); }
+
+        .hero-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 36px 28px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-card h3 .icon { color: var(--red); }
+        .quick-list { list-style: none; }
+        .quick-list li {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.92rem;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .quick-list li:last-child { border-bottom: none; }
+        .quick-list .check { color: var(--red); font-weight: 700; }
+
+        /* Story */
+        .story { padding: 90px 24px; }
+        .story-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .story-image {
+            background: linear-gradient(135deg, var(--carbon) 0%, var(--steel) 100%);
+            border-radius: 20px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .story-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--red);
+        }
+        .section-tag {
+            display: inline-block;
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        .story h2 { font-size: 2rem; margin-bottom: 16px; }
+        .story p { color: var(--steel); margin-bottom: 14px; }
+        .story p strong { color: var(--carbon); }
+
+        /* Services */
+        .services { padding: 90px 24px; background: var(--light); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 2.2rem; }
+        .section-header p { color: var(--silver); max-width: 500px; margin: 10px auto 0; }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 32px 24px;
+            border: 1px solid #E5E5EA;
+            transition: all 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+        }
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--red-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+        }
+        .service-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .service-card p { color: var(--silver); font-size: 0.9rem; line-height: 1.7; }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 24px;
+            background: var(--carbon);
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--red);
+        }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 12px; }
+        .cta-section p { color: rgba(255,255,255,0.6); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Contact */
+        .contact { padding: 80px 24px; }
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact h2 { font-size: 1.8rem; margin-bottom: 10px; }
+        .contact > div p { color: var(--silver); margin-bottom: 28px; }
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 18px;
+        }
+        .contact-item .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-item strong { display: block; font-size: 0.9rem; }
+        .contact-item span { color: var(--silver); font-size: 0.88rem; }
+        .contact-item a { color: var(--red); font-weight: 500; }
+
+        .map-placeholder {
+            background: var(--light);
+            border-radius: 16px;
+            aspect-ratio: 16/10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--silver);
+            font-size: 1rem;
+            border: 1px solid #E5E5EA;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--carbon);
+            color: rgba(255,255,255,0.4);
+            padding: 36px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+        }
+        footer strong { color: #fff; }
+
+        @media (max-width: 768px) {
+            .hero-inner, .story-inner, .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+            .hero h1 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .story-image { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-banner">
+        🏁 Gratis redesign-forslag til Kurt Mejers Auto — <a href="https://andersschriver.com">Se mere</a>
+    </div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="flag">🏁</span> Kurt Mejers Auto
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Værksted</a></li>
+                <li><a href="#story">Om Kurt</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <a href="tel:+4575627979" class="nav-cta">Ring 75 62 79 79</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badges">
+                    <span class="badge red">🏁 Rallykører & mekaniker</span>
+                    <span class="badge">✓ Hella Service Partner</span>
+                </div>
+                <h1>Autoværksted i <span>Horsens</span> med passion for biler</h1>
+                <p>Kurt Mejer kombinerer årtiers erfaring som rallykører og mekaniker. Dit næste service, reparation eller tjek før syn er i de bedste hænder.</p>
+                <div class="hero-actions">
+                    <a href="tel:+4575627979" class="btn-red">📞 Ring 75 62 79 79</a>
+                    <a href="#services" class="btn-ghost">Se vores ydelser</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3><span class="icon">🔧</span> Hurtig service-oversigt</h3>
+                <ul class="quick-list">
+                    <li><span class="check">✓</span> Service & vedligeholdelse</li>
+                    <li><span class="check">✓</span> Reparation — alle mærker</li>
+                    <li><span class="check">✓</span> Tjek før syn</li>
+                    <li><span class="check">✓</span> Bremser, kobling, udstødning</li>
+                    <li><span class="check">✓</span> Fejlfinding & diagnostik</li>
+                    <li><span class="check">✓</span> Uforpligtende tilbud</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Værksted</span>
+            <h2>Vi klarer din bil</h2>
+            <p>Moderne udstyr, erfarne mekanikere og altid den bedste pris.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Service & eftersyn</h3>
+                <p>Regelmæssig service forlænger din bils levetid. Vi servicerer alle mærker efter fabrikantens anvisninger.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Reparationer</h3>
+                <p>Fra bremser og kobling til motor og gearkasse. Vi finder fejlen og fikser den — hurtigt og effektivt.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Tjek før syn</h3>
+                <p>Undgå overraskelser ved synshallen. Vi gennemgår din bil og udbedrer eventuelle mangler inden synet.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖥️</div>
+                <h3>Diagnostik</h3>
+                <p>Avanceret fejlsøgning med moderne diagnoseudstyr. Vi finder årsagen — ikke bare symptomet.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛞</div>
+                <h3>Dæk & hjul</h3>
+                <p>Dækskift, afbalancering og opbevaring. Kør sikkert hele året med de rette dæk.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>Klima & AC</h3>
+                <p>Service og påfyldning af aircondition. Hold temperaturen behagelig sommer som vinter.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-inner">
+            <div class="story-image">🏎️💨</div>
+            <div>
+                <span class="section-tag">Historien</span>
+                <h2>Fra rallybane til værksted</h2>
+                <p>Kurt Mejer er ikke bare mekaniker — han er <strong>erfaren rallykører</strong> med en passion for biler der går langt ud over det almindelige. Den erfaring fra racerbanen tager han med ind i værkstedet hver eneste dag.</p>
+                <p>Med base i Horsens har Kurt og teamet — herunder mekaniker <strong>Heino Mejer</strong> og <strong>Lasse Skaanild</strong> — betjent bilister i Horsens, Hundslund, Hedensted, Brædstrup, Tørring, Juelsminde og Vejle i årevis.</p>
+                <p>Som <strong>Hella Service Partner</strong> opretholder vi de højeste standarder for kvalitet og bruger kun godkendte reservedele og moderne udstyr.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Klar til at booke service?</h2>
+        <p>Ring til os eller kig forbi værkstedet for et uforpligtende tilbud. Vi tager imod alle bilmærker.</p>
+        <div class="cta-actions">
+            <a href="tel:+4575627979" class="btn-red">📞 Ring 75 62 79 79</a>
+            <a href="#contact" class="btn-ghost" style="border-color: rgba(255,255,255,0.2); color: #fff;">Se kontaktinfo</a>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div>
+            <h2>Kontakt os</h2>
+            <p>Kig forbi eller ring — vi sidder klar til at hjælpe med din bil.</p>
+
+            <div class="contact-item">
+                <div class="icon">📞</div>
+                <div>
+                    <strong>Telefon</strong>
+                    <a href="tel:+4575627979">75 62 79 79</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="icon">📍</div>
+                <div>
+                    <strong>Adresse</strong>
+                    <span>8700 Horsens</span>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="icon">🏁</div>
+                <div>
+                    <strong>Partner</strong>
+                    <span>Hella Service Partner</span>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="icon">🚗</div>
+                <div>
+                    <strong>Dækker</strong>
+                    <span>Horsens, Hundslund, Hedensted, Brædstrup, Vejle</span>
+                </div>
+            </div>
+        </div>
+        <div class="map-placeholder">
+            📍 Kort over Kurt Mejers Auto — Horsens
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Kurt Mejers Auto</strong> · 8700 Horsens · CVR: 69584217 · Hella Service Partner</p>
+        <p style="margin-top: 8px;">© 2026 Kurt Mejers Auto — Alle rettigheder forbeholdes</p>
+    </footer>
+
+</body>
+</html>

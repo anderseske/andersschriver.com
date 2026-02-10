@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smedemester Jan Nielsen ApS — Smed & VVS i Nørre Nebel</title>
+    <meta name="description" content="Smedemester Jan Nielsen ApS — din lokale smed og VVS-installatør i Nørre Nebel. Varmepumper, smedearbejde og VVS til private og erhverv.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --steel: #2C3E50;
+            --steel-light: #3D5266;
+            --steel-dark: #1A252F;
+            --fire: #E74C3C;
+            --fire-dark: #C0392B;
+            --warm: #F39C12;
+            --warm-light: #FDE8CD;
+            --white: #FAFCFD;
+            --gray-50: #F5F7FA;
+            --gray-100: #E8ECF0;
+            --gray-200: #D1D8E0;
+            --gray-500: #6B7A8D;
+            --gray-700: #3D4F5F;
+            --gray-900: #1A2332;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-900);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-height: 1.2; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        .preview-banner {
+            background: var(--warm);
+            color: var(--gray-900);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .preview-banner a { color: var(--steel-dark); text-decoration: underline; font-weight: 600; }
+
+        nav {
+            background: var(--steel-dark);
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo .icon { color: var(--fire); font-size: 1.4rem; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--warm); }
+        .nav-cta {
+            background: var(--fire);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: var(--fire-dark); }
+
+        .hero {
+            background: linear-gradient(135deg, var(--steel-dark) 0%, var(--steel) 60%, var(--steel-light) 100%);
+            padding: 100px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(231,76,60,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text { color: #fff; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--warm-light);
+            margin-bottom: 24px;
+        }
+        .hero h1 { font-size: 2.7rem; line-height: 1.15; margin-bottom: 20px; }
+        .hero h1 span { color: var(--fire); }
+        .hero p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 32px;
+            max-width: 480px;
+            line-height: 1.8;
+        }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+        .btn-primary {
+            background: var(--fire);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover { background: var(--fire-dark); transform: translateY(-1px); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.15); }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--warm);
+            display: block;
+        }
+        .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+        .services { padding: 90px 24px; background: var(--gray-50); }
+        .section-header { text-align: center; margin-bottom: 56px; }
+        .section-tag {
+            display: inline-block;
+            background: var(--warm-light);
+            color: var(--steel);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 5px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+        .section-header h2 { font-size: 2.2rem; color: var(--steel-dark); }
+        .section-header p { color: var(--gray-500); max-width: 520px; margin: 12px auto 0; }
+
+        .services-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .service-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px 28px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.3s;
+        }
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,62,80,0.08); }
+        .service-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--warm-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 { font-size: 1.15rem; margin-bottom: 10px; color: var(--steel-dark); }
+        .service-card p { color: var(--gray-500); font-size: 0.92rem; line-height: 1.7; }
+
+        .trust { padding: 70px 24px; background: var(--steel-dark); color: #fff; text-align: center; }
+        .trust-grid {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .trust-item .trust-icon { font-size: 2.2rem; margin-bottom: 12px; }
+        .trust-item h4 { font-size: 1rem; margin-bottom: 6px; }
+        .trust-item p { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+        .about { padding: 90px 24px; }
+        .about-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-image {
+            background: linear-gradient(135deg, var(--warm-light) 0%, var(--gray-100) 100%);
+            border-radius: 20px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .about h2 { font-size: 2rem; color: var(--steel-dark); margin-bottom: 16px; }
+        .about p { color: var(--gray-500); margin-bottom: 14px; }
+        .about-facts { display: flex; gap: 32px; margin-top: 24px; }
+        .about-fact { text-align: center; }
+        .about-fact strong {
+            display: block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            color: var(--steel);
+        }
+        .about-fact span { font-size: 0.82rem; color: var(--gray-500); }
+
+        .contact { padding: 90px 24px; background: var(--gray-50); }
+        .contact-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .contact-info h2 { font-size: 2rem; color: var(--steel-dark); margin-bottom: 12px; }
+        .contact-info > p { color: var(--gray-500); margin-bottom: 32px; }
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .contact-detail .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--warm-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .contact-detail strong { display: block; font-size: 0.92rem; }
+        .contact-detail span { color: var(--gray-500); font-size: 0.88rem; }
+        .contact-detail a { color: var(--steel); font-weight: 500; }
+
+        .contact-form {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px;
+            border: 1px solid var(--gray-100);
+        }
+        .contact-form h3 { font-size: 1.2rem; margin-bottom: 20px; color: var(--steel-dark); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.85rem; font-weight: 500; margin-bottom: 6px; color: var(--gray-700); }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--fire); }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-submit {
+            background: var(--fire);
+            color: #fff;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .form-submit:hover { background: var(--fire-dark); }
+
+        footer {
+            background: var(--gray-900);
+            color: rgba(255,255,255,0.5);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer strong { color: #fff; }
+
+        @media (max-width: 768px) {
+            .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .trust-grid { grid-template-columns: 1fr; gap: 24px; }
+            .nav-links { display: none; }
+            .about-image { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-banner">
+        🔥 Dette er et gratis redesign-forslag til Smedemester Jan Nielsen — <a href="https://andersschriver.com">Se mere på andersschriver.com</a>
+    </div>
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">
+                <span class="icon">🔥</span> Smedemester Jan Nielsen
+            </div>
+            <ul class="nav-links">
+                <li><a href="#services">Ydelser</a></li>
+                <li><a href="#about">Om os</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <a href="tel:+4540114574" class="nav-cta">Ring nu →</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-badge">✓ Autoriseret smedemester</div>
+                <h1>Din lokale <span>smed & VVS</span> i Nørre Nebel</h1>
+                <p>Smedemester Jan Nielsen ApS leverer godt håndværk inden for smedearbejde, VVS og varmepumper. Mange års erfaring, lokalt forankret.</p>
+                <div class="hero-actions">
+                    <a href="tel:+4540114574" class="btn-primary">📞 Ring 40 11 45 74</a>
+                    <a href="#contact" class="btn-secondary">Send en forespørgsel</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number">25+</span>
+                    <span class="stat-label">Års erfaring</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">Lokal</span>
+                    <span class="stat-label">Nørre Nebel</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Autoriseret</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">★</span>
+                    <span class="stat-label">Godt håndværk</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <span class="section-tag">Vores ydelser</span>
+            <h2>Smed, VVS & varmepumper</h2>
+            <p>Alt fra smedearbejde og VVS-installation til energieffektive varmepumper.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔥</div>
+                <h3>Smedearbejde</h3>
+                <p>Traditionelt smedearbejde i stål og metal. Reparationer, specialfremstilling og vedligeholdelse til private og erhverv.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚿</div>
+                <h3>VVS-installation</h3>
+                <p>Komplet VVS-service: badeværelser, køkkener, vandinstallation og kloakarbejde. Altid udført korrekt og holdbart.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">♨️</div>
+                <h3>Varmepumper</h3>
+                <p>Rådgivning, salg og installation af varmepumper. Spar på varmeregningen med en energieffektiv løsning.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Service & reparation</h3>
+                <p>Akut service og vedligeholdelse. Vi er hurtige og pålidelige, når noget skal fikses.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Varme & sanitet</h3>
+                <p>Centralvarme, gulvvarme, radiatorer og sanitet. Komfort og varme i dit hjem året rundt.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Nybyg & renovering</h3>
+                <p>VVS og smedearbejde til nybyggeri og renovering. Vi er med fra start til slut.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust">
+        <div class="container">
+            <h2>Godt håndværk er vores ansvar</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <h4>Autoriseret</h4>
+                    <p>Din garanti for korrekt og sikkert arbejde — altid efter forskrifterne.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🤝</div>
+                    <h4>Lokalt & personligt</h4>
+                    <p>Vi kender området og vores kunder. Personlig service med kort responstid.</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⭐</div>
+                    <h4>Mange års erfaring</h4>
+                    <p>Årtiers håndværkserfaring sikrer kvalitet i hver eneste opgave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-inner">
+            <div class="about-image">🔨🔥</div>
+            <div>
+                <h2>Om Smedemester Jan Nielsen</h2>
+                <p>Smedemester Jan Nielsen ApS holder til på Tømmergade 11 i Nørre Nebel. Med mange års erfaring som autoriseret smedemester og VVS-installatør tilbyder vi håndværk af højeste kvalitet.</p>
+                <p>Vi servicerer hele Vestjylland — fra Nørre Nebel og Varde til Esbjerg og omegn. Uanset om du er privat boligejer eller erhvervsdrivende, er vi din lokale partner.</p>
+                <div class="about-facts">
+                    <div class="about-fact">
+                        <strong>25+</strong>
+                        <span>Års erfaring</span>
+                    </div>
+                    <div class="about-fact">
+                        <strong>Lokal</strong>
+                        <span>Vestjylland</span>
+                    </div>
+                    <div class="about-fact">
+                        <strong>100%</strong>
+                        <span>Autoriseret</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h2>Kontakt os</h2>
+                <p>Ring eller skriv — vi vender hurtigt tilbage med et uforpligtende tilbud.</p>
+
+                <div class="contact-detail">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Telefon</strong>
+                        <a href="tel:+4540114574">40 11 45 74</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">✉️</div>
+                    <div>
+                        <strong>Email</strong>
+                        <a href="mailto:janvvs@smedemesterjannielsen.dk">janvvs@smedemesterjannielsen.dk</a>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">📍</div>
+                    <div>
+                        <strong>Adresse</strong>
+                        <span>Tømmergade 11, 6830 Nørre Nebel</span>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <div class="icon">🕐</div>
+                    <div>
+                        <strong>Åbningstider</strong>
+                        <span>Man–Fre: 07:00–16:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Få et uforpligtende tilbud</h3>
+                <div class="form-group">
+                    <label>Navn</label>
+                    <input type="text" placeholder="Dit navn">
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" placeholder="Dit telefonnummer">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="Din email">
+                </div>
+                <div class="form-group">
+                    <label>Beskriv din opgave</label>
+                    <textarea placeholder="Fortæl kort hvad du har brug for hjælp til..."></textarea>
+                </div>
+                <button class="form-submit">Send forespørgsel →</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Smedemester Jan Nielsen ApS</strong> · Tømmergade 11, 6830 Nørre Nebel · Autoriseret smedemester & VVS-installatør</p>
+        <p style="margin-top: 8px;">© 2026 Smedemester Jan Nielsen ApS — Alle rettigheder forbeholdes</p>
+    </footer>
+
+</body>
+</html>

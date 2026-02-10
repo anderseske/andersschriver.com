@@ -3,739 +3,1063 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bertelsen Blomster — Blomsterhandler på Svanes Torv i Horsens. Buketter, binderi og levering.">
-    <title>Bertelsen Blomster | Horsens</title>
+    <title>Bertelsen Blomster — Stedet med de mange idéer | Horsens</title>
+    <meta name="description" content="Bertelsen Blomster i Horsens — buketter, bryllup, begravelse, erhvervsleveringer og meget mere. Stedet med de mange idéer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --white: #ffffff;
-            --cream: #fdfcfa;
-            --beige: #f5f0eb;
-            --gray: #6b7280;
-            --dark: #2d2a26;
-            --black: #1a1815;
-            --green: #4a7c59;
-            --green-dark: #3d6549;
-            --green-soft: #e8f0ea;
-            --rose: #d4a5a5;
-            --rose-soft: #fdf2f2;
+            --sage: #8B9E7E;
+            --sage-light: #A8B89E;
+            --sage-dark: #6B7E5E;
+            --cream: #FAF6F0;
+            --cream-dark: #F0EAE0;
+            --warm-white: #FFFDF9;
+            --dusty-rose: #C9A9A6;
+            --dusty-rose-light: #E0CCCB;
+            --charcoal: #2C2C2C;
+            --text: #3A3A3A;
+            --text-light: #6B6B6B;
+            --gold: #B8956A;
+            --gold-light: #D4B896;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--cream);
-            color: var(--dark);
-            line-height: 1.8;
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--warm-white);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-        /* Preview Banner */
-        .preview-banner {
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 14px;
-            text-align: center;
-            font-size: 0.95rem;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.2;
         }
-        .preview-banner a { color: white; text-decoration: underline; font-weight: 600; }
 
-        /* Nav */
-        nav {
-            background: var(--white);
+        img { max-width: 100%; display: block; }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══ NAV ═══ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
             padding: 20px 0;
-            border-bottom: 1px solid var(--beige);
+            transition: all 0.4s ease;
+            background: transparent;
         }
 
-        nav .container {
+        .nav.scrolled {
+            background: rgba(250, 246, 240, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--black);
+        .nav-logo {
+            height: 70px;
+            transition: height 0.4s ease;
+            border-radius: 4px;
         }
 
-        .logo span { color: var(--green); }
+        .nav.scrolled .nav-logo { height: 50px; }
 
         .nav-links {
             display: flex;
             gap: 32px;
+            list-style: none;
             align-items: center;
         }
 
         .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+            transition: color 0.3s;
+            font-weight: 400;
         }
 
-        .nav-links a:hover { color: var(--green); }
+        .nav.scrolled .nav-links a { color: var(--text); }
+        .nav-links a:hover { color: var(--sage); }
 
         .nav-cta {
-            background: var(--green);
+            background: var(--sage) !important;
             color: white !important;
-            padding: 12px 24px;
-            border-radius: 50px;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.8rem !important;
+            letter-spacing: 0.1em;
+            transition: background 0.3s, transform 0.3s !important;
         }
 
-        .nav-cta:hover { background: var(--green-dark); }
+        .nav-cta:hover { background: var(--sage-dark) !important; transform: translateY(-1px); }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
         }
 
-        /* Hero */
+        .hamburger span {
+            width: 24px; height: 2px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .nav.scrolled .hamburger span { background: var(--charcoal); }
+
+        /* ═══ HERO ═══ */
         .hero {
-            padding: 80px 0 100px;
-            background: linear-gradient(180deg, var(--white) 0%, var(--cream) 100%);
-            text-align: center;
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .hero-subtitle {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--green);
-            font-size: 0.95rem;
-            font-weight: 600;
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/forside-hero.jpg') 65% 15%/cover no-repeat;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.25) 0%,
+                rgba(0,0,0,0.35) 50%,
+                rgba(0,0,0,0.5) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 0 24px;
+        }
+
+        .hero-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 1s 0.3s forwards;
+            color: var(--cream-dark);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            line-height: 1.15;
-            margin-bottom: 24px;
-            color: var(--black);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 500;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeUp 1s 0.5s forwards;
         }
 
-        .hero h1 .green { color: var(--green); }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 550px;
-            margin: 0 auto 36px;
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeUp 1s 0.7s forwards;
+            color: var(--cream-dark);
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: var(--green);
+        .hero-btn {
+            display: inline-block;
+            background: var(--sage);
             color: white;
+            padding: 16px 48px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.4s;
+            opacity: 0;
+            animation: fadeUp 1s 0.9s forwards;
         }
 
-        .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+        .hero-btn:hover { background: var(--sage-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-        .btn-secondary {
-            background: var(--white);
-            color: var(--dark);
-            border: 2px solid var(--beige);
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s 1.2s forwards;
         }
 
-        .btn-secondary:hover { border-color: var(--green); }
-
-        .btn svg { width: 20px; height: 20px; }
-
-        /* Gallery - NY SEKTION MED RIGTIGE BILLEDER */
-        .gallery {
-            padding: 80px 0;
-            background: var(--white);
+        .scroll-indicator div {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+            animation: scrollPulse 2s infinite;
         }
 
-        .section-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 50px;
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
         }
 
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 12px;
-            color: var(--black);
+        /* ═══ SECTIONS ═══ */
+        section { padding: 100px 0; }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--sage);
+            margin-bottom: 16px;
+            display: block;
         }
 
-        .section-header p {
-            color: var(--gray);
-            font-size: 1.1rem;
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--charcoal);
+            margin-bottom: 20px;
         }
 
-        .gallery-scroll {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 10px 0 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+        .section-divider {
+            width: 60px; height: 2px;
+            background: var(--sage-light);
+            margin-bottom: 32px;
         }
 
-        .gallery-scroll::-webkit-scrollbar {
-            height: 6px;
+        .section-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 640px;
+            line-height: 1.9;
         }
 
-        .gallery-scroll::-webkit-scrollbar-track {
-            background: var(--beige);
-            border-radius: 10px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb {
-            background: var(--green);
-            border-radius: 10px;
-        }
-
-        .gallery-item {
-            flex: 0 0 280px;
-            height: 280px;
-            border-radius: 16px;
-            overflow: hidden;
-            scroll-snap-align: start;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.02);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Services */
-        .services {
-            padding: 100px 0;
-            background: var(--cream);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-        }
-
-        .service-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 36px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(74, 124, 89, 0.1);
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--green-soft);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-        }
-
-        .service-icon svg {
-            width: 32px;
-            height: 32px;
-            color: var(--green);
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--black);
-        }
-
-        .service-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-
-        /* About */
-        .about {
-            padding: 100px 0;
-            background: var(--green);
-            color: var(--white);
-        }
+        /* ═══ OM OS ═══ */
+        .about { background: var(--cream); }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
         }
 
-        @media (max-width: 900px) {
-            .about-grid { grid-template-columns: 1fr; text-align: center; }
-        }
-
-        .about-content h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            margin-bottom: 24px;
-        }
-
-        .about-content p {
-            opacity: 0.95;
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-        }
-
-        .about-info {
-            margin-top: 32px;
-            display: flex;
-            flex-direction: column;
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
 
-        .about-info-item {
+        .about-images img {
+            border-radius: 8px;
+            object-fit: cover;
+            height: 280px;
+            width: 100%;
+        }
+
+        .about-images img:first-child {
+            grid-column: 1 / -1;
+            height: 300px;
+        }
+
+        .about-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--sage-dark);
+            border-left: 3px solid var(--sage-light);
+            padding-left: 24px;
+            margin-top: 32px;
+            line-height: 1.8;
+        }
+
+        /* ═══ SERVICES ═══ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 420px;
+            cursor: pointer;
+            group: true;
+        }
+
+        .service-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .service-card:hover img { transform: scale(1.05); }
+
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
             display: flex;
-            align-items: center;
-            gap: 12px;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            transition: background 0.4s;
         }
 
-        @media (max-width: 900px) {
-            .about-info-item { justify-content: center; }
+        .service-card:hover .service-card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
         }
 
-        .about-info-item svg {
-            width: 22px;
-            height: 22px;
-            opacity: 0.9;
-        }
-
-        .about-visual {
-            background: rgba(255,255,255,0.1);
-            border-radius: 24px;
-            padding: 48px;
-            text-align: center;
-        }
-
-        .about-visual h3 {
-            font-size: 2.5rem;
+        .service-card h3 {
+            font-size: 1.6rem;
+            color: white;
             margin-bottom: 8px;
         }
 
-        .about-visual p { opacity: 0.9; }
-
-        /* CTA */
-        .cta {
-            padding: 100px 0;
-            text-align: center;
-            background: var(--cream);
+        .service-card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            color: var(--sage-light);
+            margin-bottom: 8px;
         }
 
-        .cta h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 16px;
-            color: var(--black);
+        .service-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.4s;
+            opacity: 0;
         }
 
-        .cta p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            max-width: 550px;
-            margin: 0 auto 40px;
+        .service-card:hover p { max-height: 200px; opacity: 1; }
+
+        /* ═══ GALLERI ═══ */
+        .gallery { background: var(--cream); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 60px;
         }
 
-        .cta-phone {
-            display: inline-flex;
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+        .gallery-item.tall { grid-row: span 2; aspect-ratio: 1/2; }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 2000;
+            display: none;
             align-items: center;
-            gap: 16px;
-            background: var(--green);
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .lightbox.active { display: flex; opacity: 1; }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px; right: 32px;
             color: white;
-            padding: 24px 48px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 2rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+
+        /* ═══ BUTIKKEN ═══ */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            align-items: start;
+        }
+
+        .shop-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .shop-images img {
+            border-radius: 8px;
+            object-fit: cover;
+            height: 220px;
+            width: 100%;
+        }
+
+        .brand-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .brand-tag {
+            background: var(--cream);
+            border: 1px solid var(--cream-dark);
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            letter-spacing: 0.03em;
+            color: var(--text-light);
             transition: all 0.3s;
         }
 
-        .cta-phone:hover {
-            background: var(--green-dark);
-            transform: translateY(-3px);
+        .brand-tag:hover { background: var(--sage); color: white; border-color: var(--sage); }
+
+        .partners-section {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--cream-dark);
         }
 
-        .cta-phone svg { width: 32px; height: 32px; }
-
-        /* Contact */
-        .contact {
-            padding: 100px 0;
-            background: var(--white);
+        .partners-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            color: var(--charcoal);
         }
+
+        /* ═══ KONTAKT ═══ */
+        .contact { background: var(--cream); }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
+            margin-top: 60px;
         }
 
-        @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
+        .contact-info-block {
+            margin-bottom: 36px;
         }
 
-        .contact-info h2 {
-            font-size: 2.25rem;
-            color: var(--black);
+        .contact-info-block h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--charcoal);
+        }
+
+        .contact-info-block p, .contact-info-block a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .contact-info-block a:hover { color: var(--sage); }
+
+        .hours-table {
+            width: 100%;
+        }
+
+        .hours-table tr td {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--cream-dark);
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .hours-table tr td:first-child { font-weight: 500; color: var(--text); width: 120px; }
+        .hours-table .closed { color: var(--dusty-rose); }
+
+        .payment-methods {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .payment-item {
+            text-align: center;
+        }
+
+        .payment-item .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .payment-item .value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%; height: 100%;
+            border: none;
+            filter: saturate(0.8) brightness(1.05);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--sage);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.4s;
+            margin-top: 24px;
+        }
+
+        .contact-btn:hover { background: var(--sage-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,158,126,0.3); }
+
+        /* ═══ FOOTER ═══ */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .footer-logo { height: 50px; margin: 0 auto 20px; border-radius: 4px; filter: brightness(1.5); }
+
+        footer p { font-size: 0.85rem; line-height: 2; }
+
+        .footer-tagline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--sage-light);
+            font-size: 1rem;
             margin-bottom: 24px;
         }
 
-        .contact-info > p {
-            color: var(--gray);
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
             margin-bottom: 32px;
+            flex-wrap: wrap;
         }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        .footer-links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s;
         }
 
-        .contact-item {
-            display: flex;
-            gap: 16px;
-            align-items: center;
+        .footer-links a:hover { color: var(--sage-light); }
+
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.78rem;
         }
 
-        .contact-item-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--green-soft);
+        /* ═══ FLOATING CTA ═══ */
+        .floating-cta {
+            position: fixed;
+            bottom: 32px; right: 32px;
+            z-index: 900;
+            background: var(--sage);
+            color: white;
+            width: 60px; height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-item-icon svg {
-            width: 26px;
-            height: 26px;
-            color: var(--green);
-        }
-
-        .contact-item-text h4 {
-            font-size: 0.85rem;
-            color: var(--gray);
-            font-family: 'Nunito', sans-serif;
-            margin-bottom: 4px;
-        }
-
-        .contact-item-text p {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--black);
-        }
-
-        .contact-item-text a {
-            color: var(--black);
-            text-decoration: none;
-        }
-
-        .contact-item-text a:hover { color: var(--green); }
-
-        .contact-hours {
-            background: var(--cream);
-            border-radius: 20px;
-            padding: 40px;
-        }
-
-        .contact-hours h3 {
             font-size: 1.5rem;
-            color: var(--black);
-            margin-bottom: 24px;
+            box-shadow: 0 6px 24px rgba(139,158,126,0.4);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        .hours-list {
-            display: flex;
+        .floating-cta.visible { opacity: 1; transform: translateY(0); }
+        .floating-cta:hover { background: var(--sage-dark); transform: translateY(-3px) scale(1.05); }
+
+        /* ═══ ANIMATIONS ═══ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══ MOBILE NAV ═══ */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(250, 246, 240, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
             flex-direction: column;
-            gap: 12px;
-        }
-
-        .hours-item {
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--beige);
-        }
-
-        .hours-item:last-child { border-bottom: none; }
-
-        .hours-item span:first-child { color: var(--gray); }
-        .hours-item span:last-child { font-weight: 600; color: var(--dark); }
-
-        /* Footer */
-        footer {
-            background: var(--black);
-            color: white;
-            padding: 60px 0 30px;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 24px;
+            justify-content: center;
+            gap: 32px;
         }
 
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
             font-size: 1.6rem;
+            color: var(--charcoal);
+            transition: color 0.3s;
         }
 
-        .footer-logo span { color: var(--green); }
+        .mobile-menu a:hover { color: var(--sage); }
 
-        footer p {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .about-grid,
+            .shop-grid,
+            .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { height: 320px; }
+            .service-card p { max-height: 200px; opacity: 1; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.wide { grid-column: span 1; aspect-ratio: 1; }
+            .gallery-item.tall { grid-row: span 1; aspect-ratio: 1; }
+
+            section { padding: 72px 0; }
+
+            .map-container { min-height: 300px; }
         }
 
-        footer a {
-            color: var(--green);
-            text-decoration: none;
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+            .about-images img { height: 200px; }
+            .about-images img:first-child { height: 220px; }
+            .service-card { height: 280px; }
+            .service-card-overlay { padding: 24px; }
+            .hero-bg { background-position: 55% 15%!important; }
         }
     </style>
 </head>
 <body>
-    <!-- Preview Banner -->
-    <div class="preview-banner">
-        🌷 Gratis redesign-forslag fra <a href="https://andersschriver.dk">Anders Schriver</a> — <a href="mailto:hej@andersschriver.dk?subject=Ja tak til Bertelsen Blomster redesign">Interesseret? Skriv til mig →</a>
-    </div>
 
-    <!-- Nav -->
-    <nav>
-        <div class="container">
-            <div class="logo">Bertelsen <span>Blomster</span></div>
-            <div class="nav-links">
-                <a href="#galleri">Galleri</a>
-                <a href="#ydelser">Ydelser</a>
-                <a href="#om">Om os</a>
-                <a href="#kontakt">Kontakt</a>
-                <a href="tel:+4526701737" class="nav-cta">Ring 26 70 17 37</a>
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#hero"><img src="images/logo.jpg" alt="Bertelsen Blomster" class="nav-logo"></a>
+        <ul class="nav-links">
+            <li><a href="#om">Om os</a></li>
+            <li><a href="#services">Ydelser</a></li>
+            <li><a href="#galleri">Galleri</a></li>
+            <li><a href="#butikken">Butikken</a></li>
+            <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#om" onclick="toggleMenu()">Om os</a>
+    <a href="#services" onclick="toggleMenu()">Ydelser</a>
+    <a href="#galleri" onclick="toggleMenu()">Galleri</a>
+    <a href="#butikken" onclick="toggleMenu()">Butikken</a>
+    <a href="#kontakt" onclick="toggleMenu()">Kontakt os</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-tagline">Svanes Torv 4 · Horsens</p>
+        <h1>Bertelsen Blomster</h1>
+        <p class="hero-subtitle">Stedet med de mange idéer</p>
+        <a href="#kontakt" class="hero-btn">Kontakt os</a>
+    </div>
+    <div class="scroll-indicator"><div></div></div>
+</section>
+
+<!-- OM OS -->
+<section class="about" id="om">
+    <div class="container">
+        <div class="about-grid">
+            <div class="reveal">
+                <span class="section-label">Om os</span>
+                <h2 class="section-title">Blomster er meget mere<br>end bare blomster</h2>
+                <div class="section-divider"></div>
+                <p class="section-text">Bertelsen Blomster stræber efter at give dig noget særligt. Vi lytter til dine ønsker, så blomsterkøbet bliver en oplevelse, hvor du bliver set, hørt og imødekommet. Blomster er nemlig ikke bare blomster. Det er meget mere – og det får du hos os.</p>
+                <p class="section-text" style="margin-top: 20px;">Lars Bertelsen har i mange år kreeret blomsteroplevelser til store og små begivenheder i menneskers liv. Med sine erfaringer i bagagen forstår Lars at spore sig ind på den enkelte kundes stil og tanker, så blomsterkøbet lige præcist bliver noget helt specielt – hver eneste gang.</p>
+                <div class="about-quote">
+                    "Hver buket fortæller en historie. Vores opgave er at lytte til din."
+                </div>
+                <div style="margin-top: 32px; display: flex; gap: 40px;">
+                    <div>
+                        <p style="font-weight: 500; color: var(--charcoal);">Lars Bertelsen</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light);">Florist & blomsterdekoratør</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 500; color: var(--charcoal);">Per Ulmer</p>
+                        <p style="font-size: 0.85rem; color: var(--text-light);">Og alt det andet</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-images reveal reveal-delay-2">
+                <img src="images/svanestorv4-facade.jpeg" alt="Bertelsen Blomster butiksfacade" loading="lazy">
+                <img src="images/doerparti.jpeg" alt="Dørparti" loading="lazy">
+                <img src="images/2138.jpg" alt="I butikken" loading="lazy">
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-subtitle">🌸 Horsens' lokale blomsterhandler</div>
-            <h1>Smukke blomster med <span class="green">personligt præg</span></h1>
-            <p>Fra Svanes Torv i hjertet af Horsens bringer vi glæde med friske buketter, binderi og levering til alle anledninger.</p>
-            <div class="hero-buttons">
-                <a href="tel:+4526701737" class="btn btn-primary">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+<!-- SERVICES -->
+<section id="services">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Ydelser</span>
+            <h2 class="section-title">Blomster til livets<br>store øjeblikke</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <img src="images/buket.jpg" alt="Blomster & Buketter" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">01</span>
+                    <h3>Blomster & Buketter</h3>
+                    <p>Buketter til alle lejligheder, blomsterabonnement og altid friske, smukke blomster sammensat med omhu og kreativitet.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <img src="images/IMG_6496.jpg" alt="Begravelse" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">02</span>
+                    <h3>Begravelse</h3>
+                    <p>Kistepynt, kranse, båredekorationer, bårebuketter, kirkepynt og personlig begravelsesbinderi — med respekt og varme.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <img src="images/070.jpg" alt="Bryllup, Fester & Events" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">03</span>
+                    <h3>Bryllup, Fester & Events</h3>
+                    <p>Brudebuketter, scenepynt, festudsmykning, fødselsdage, udstillinger og total-arrangement for din helt store dag.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-4">
+                <img src="images/012.jpg" alt="Erhvervsleveringer" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">04</span>
+                    <h3>Erhvervsleveringer</h3>
+                    <p>Buketter til medarbejdere og samarbejdspartnere, friske blomster til reception og kontor, samt omplantning.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERI -->
+<section class="gallery" id="galleri">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Galleri</span>
+            <h2 class="section-title">Et udvalg af<br>vores arbejde</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item wide reveal" onclick="openLightbox(this)"><img src="images/blomster2.jpeg" alt="Blomsterarrangement" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_7664.jpg" alt="Blomster" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_7870.jpg" alt="Blomster" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/095.jpg" alt="Arrangement" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_4227.jpg" alt="Blomster" loading="lazy"></div>
+            <div class="gallery-item wide reveal" onclick="openLightbox(this)"><img src="images/IMG_7873.jpg" alt="Blomster" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_4340.jpg" alt="Blomster" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_5079.jpg" alt="Produkter" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/IMG_1454.jpg" alt="Butik" loading="lazy"></div>
+            <div class="gallery-item reveal" onclick="openLightbox(this)"><img src="images/15-butik.jpg" alt="Butik" loading="lazy"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- BUTIKKEN -->
+<section id="butikken">
+    <div class="container">
+        <div class="reveal">
+            <span class="section-label">Butikken</span>
+            <h2 class="section-title">Mere end en blomsterbutik</h2>
+            <div class="section-divider"></div>
+            <p class="section-text">Hos Bertelsen Blomster finder du ikke kun smukke blomster — vi fører også et nøje kurateret udvalg af interiør, gaveartikler og delikatesser fra anerkendte brands.</p>
+        </div>
+        <div class="shop-grid">
+            <div class="shop-images reveal">
+                <img src="images/puder-lampe.jpeg" alt="Puder og lampe" loading="lazy">
+                <img src="images/jern.jpeg" alt="Jerndekoration" loading="lazy">
+                <img src="images/bergs-jakobsdal.jpeg" alt="Bergs & Jacobsdal" loading="lazy">
+                <img src="images/bergs-potter1.jpg" alt="Bergs potter" loading="lazy">
+            </div>
+            <div class="reveal reveal-delay-2">
+                <h4 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--charcoal);">Vores brands</h4>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px;">Et udvalg af kvalitetsbrands du finder i butikken</p>
+                <div class="brand-list">
+                    <span class="brand-tag">Pärlans</span>
+                    <span class="brand-tag">Nordal</span>
+                    <span class="brand-tag">Gridelli</span>
+                    <span class="brand-tag">Bergs potter</span>
+                    <span class="brand-tag">Hattesens Konfektfabrik</span>
+                    <span class="brand-tag">Birch Nielsen</span>
+                    <span class="brand-tag">Bacanha</span>
+                    <span class="brand-tag">Jacobsdal</span>
+                    <span class="brand-tag">2Have</span>
+                    <span class="brand-tag">B-Green</span>
+                    <span class="brand-tag">Van der Pijl</span>
+                    <span class="brand-tag">La vida</span>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 20px;">Plus puder, lamper og jerndekoration</p>
+
+                <div class="partners-section">
+                    <h4>Samarbejdspartnere</h4>
+                    <div class="brand-list">
+                        <span class="brand-tag">Jørgensens Hotel</span>
+                        <span class="brand-tag">Skala</span>
+                        <span class="brand-tag">HAY</span>
+                        <span class="brand-tag">Frandsen</span>
+                        <span class="brand-tag">Centrum Festudlejning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section class="contact" id="kontakt">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Kontakt</span>
+            <h2 class="section-title">Vi glæder os til<br>at høre fra dig</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="contact-info-block">
+                    <h4>Besøg os</h4>
+                    <p>Svanes Torv 4<br>8700 Horsens</p>
+                </div>
+                <div class="contact-info-block">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="tel:+4526701737">+45 2670 1737</a><br>
+                        <a href="mailto:lars@bertelsenblomster.dk">lars@bertelsenblomster.dk</a>
+                    </p>
+                </div>
+                <div class="contact-info-block">
+                    <h4>Åbningstider</h4>
+                    <table class="hours-table">
+                        <tr><td>Mandag</td><td class="closed">Lukket</td></tr>
+                        <tr><td>Tirsdag</td><td>10:00 – 17:30</td></tr>
+                        <tr><td>Onsdag</td><td>10:00 – 17:30</td></tr>
+                        <tr><td>Torsdag</td><td>10:00 – 17:30</td></tr>
+                        <tr><td>Fredag</td><td>10:00 – 17:30</td></tr>
+                        <tr><td>Lørdag</td><td>10:00 – 13:00</td></tr>
+                        <tr><td>Søndag</td><td class="closed">Lukket</td></tr>
+                    </table>
+                </div>
+                <div class="contact-info-block">
+                    <h4>Betaling</h4>
+                    <div class="payment-methods">
+                        <div class="payment-item">
+                            <p class="label">MobilePay</p>
+                            <p class="value">45801</p>
+                        </div>
+                        <div class="payment-item">
+                            <p class="label">Bankoverførsel</p>
+                            <p class="value">5376 0314446</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="tel:+4526701737" class="contact-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     Ring til os
                 </a>
-                <a href="#galleri" class="btn btn-secondary">Se vores arbejde</a>
+            </div>
+            <div class="map-container reveal reveal-delay-2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2243.5!2d9.8593!3d55.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464c9be6d8a4e3c1%3A0x8b5f8b8b8b8b8b8b!2sSvanes%20Torv%204%2C%208700%20Horsens!5e0!3m2!1sda!2sdk!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Gallery med rigtige billeder -->
-    <section class="gallery" id="galleri">
-        <div class="container">
-            <div class="section-header">
-                <h2>Vores arbejde</h2>
-                <p>Se et udvalg af vores smukke blomsterarrangementer</p>
-            </div>
-            <div class="gallery-scroll">
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket1.jpg" alt="Buket"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket2.jpg" alt="Arrangement"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket3.jpg" alt="Buket"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket4.jpg" alt="Buket"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket5.jpg" alt="Buket"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/buket6.jpg" alt="Buket"></div>
-                <div class="gallery-item"><img src="../assets/bertelsen-blomster/butik.jpg" alt="Butik"></div>
-            </div>
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <img src="images/logo.jpg" alt="Bertelsen Blomster" class="footer-logo">
+        <p class="footer-tagline">Stedet med de mange idéer</p>
+        <div class="footer-links">
+            <a href="#om">Om os</a>
+            <a href="#services">Ydelser</a>
+            <a href="#galleri">Galleri</a>
+            <a href="#butikken">Butikken</a>
+            <a href="#kontakt">Kontakt</a>
         </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services" id="ydelser">
-        <div class="container">
-            <div class="section-header">
-                <h2>Vores ydelser</h2>
-                <p>Vi skaber smukke blomsterarrangementer til enhver lejlighed</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
-                    </div>
-                    <h3>Buketter</h3>
-                    <p>Håndlavede buketter med sæsonens skønneste blomster. Perfekt til enhver anledning.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
-                    </div>
-                    <h3>Bryllup</h3>
-                    <p>Brudebuket, borddekorationer og kirkeudsmykning til jeres store dag.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
-                    </div>
-                    <h3>Levering</h3>
-                    <p>Vi leverer blomster i Horsens og omegn. Gør nogen glad med en overraskelse.</p>
-                </div>
-            </div>
+        <p>Svanes Torv 4 · 8700 Horsens · <a href="tel:+4526701737">+45 2670 1737</a></p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bertelsen Blomster. Alle rettigheder forbeholdes.</p>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- About -->
-    <section class="about" id="om">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2>Passion for blomster siden 1985</h2>
-                    <p>Bertelsen Blomster er en familieejet blomsterforretning på Svanes Torv i Horsens. Vi er stolte af at være en del af lokalsamfundet og bringe glæde med vores blomster.</p>
-                    <p>Lars Bertelsen og Per Ulmer driver butikken med passion og håndværk. Hos os får du altid personlig betjening og blomster i topkvalitet.</p>
-                    <div class="about-info">
-                        <div class="about-info-item">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                            <span>Personlig betjening</span>
-                        </div>
-                        <div class="about-info-item">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                            <span>Friske blomster hver dag</span>
-                        </div>
-                        <div class="about-info-item">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
-                            <span>Levering i Horsens og omegn</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <h3>4.1 ⭐</h3>
-                    <p>Trustpilot rating</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FLOATING CTA -->
+<a href="tel:+4526701737" class="floating-cta" id="floatingCta" title="Ring til os">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
 
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <h2>Brug for blomster?</h2>
-            <p>Ring til os eller kig forbi butikken på Svanes Torv. Vi hjælper dig med at finde de perfekte blomster.</p>
-            <a href="tel:+4526701737" class="cta-phone">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                26 70 17 37
-            </a>
-        </div>
-    </section>
+<script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    const floatingCta = document.getElementById('floatingCta');
 
-    <!-- Contact -->
-    <section class="contact" id="kontakt">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Besøg os</h2>
-                    <p>Find os på Svanes Torv i hjertet af Horsens. Vi glæder os til at se dig!</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-item-icon">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>Telefon</h4>
-                                <p><a href="tel:+4526701737">26 70 17 37</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-item-icon">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>Adresse</h4>
-                                <p>Svanes Torv 4, 8700 Horsens</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-item-icon">
-                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>Facebook</h4>
-                                <p><a href="https://facebook.com/bertelsenblomster" target="_blank">@bertelsenblomster</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-hours">
-                    <h3>Åbningstider</h3>
-                    <div class="hours-list">
-                        <div class="hours-item">
-                            <span>Mandag - Fredag</span>
-                            <span>09:00 - 17:30</span>
-                        </div>
-                        <div class="hours-item">
-                            <span>Lørdag</span>
-                            <span>09:00 - 14:00</span>
-                        </div>
-                        <div class="hours-item">
-                            <span>Søndag</span>
-                            <span>Lukket</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            nav.classList.add('scrolled');
+            floatingCta.classList.add('visible');
+        } else {
+            nav.classList.remove('scrolled');
+            floatingCta.classList.remove('visible');
+        }
+    });
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Bertelsen <span>Blomster</span></div>
-                <p>© 2026 Bertelsen Blomster — Svanes Torv 4, 8700 Horsens</p>
-                <a href="tel:+4526701737">26 70 17 37</a>
-            </div>
-        </div>
-    </footer>
+    // Mobile menu
+    function toggleMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
+    }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Lightbox
+    function openLightbox(el) {
+        const img = el.querySelector('img');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+</script>
+
 </body>
 </html>

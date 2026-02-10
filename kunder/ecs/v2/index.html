@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E. Christiansen & Søn — Tømrer- og Murerfirma i Odense siden 1984</title>
+    <meta name="description" content="E. Christiansen & Søn er et familieejet tømrer- og murerfirma i Odense med over 40 års erfaring. Tømrer, murer, taglægger, renovering og totalentreprise. Ring 66 17 64 64.">
+    <meta name="keywords" content="tømrer odense, murer odense, taglægger fyn, renovering odense, totalentreprise, tilbygning, facaderenovering, E. Christiansen">
+    <meta property="og:title" content="E. Christiansen & Søn — Tømrer- og Murerfirma i Odense">
+    <meta property="og:description" content="Familieejet håndværksfirma med 40+ års erfaring. Tømrer, murer, taglægger, renovering og totalentreprise på hele Fyn.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="da_DK">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           DESIGN SYSTEM — CSS Custom Properties
+           ═══════════════════════════════════════════ */
+        :root {
+            --forest: #2D4A3E;
+            --forest-light: #3D6454;
+            --forest-dark: #1E3329;
+            --sand: #F5EDE0;
+            --sand-dark: #E8DDD0;
+            --sand-light: #FAF6F0;
+            --charcoal: #2C2C2C;
+            --text: #3A3A3A;
+            --text-light: #6B6B6B;
+            --copper: #B8764D;
+            --copper-light: #D4956A;
+            --copper-dark: #9A6040;
+            --warm-white: #FFFDF9;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 100px;
+            --transition-fast: 0.3s ease;
+            --transition-med: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--warm-white);
+            line-height: 1.7;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVIGATION — Glassmorphism
+           ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(245, 237, 224, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 10px 0;
+            box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 55px;
+            transition: height var(--transition-fast);
+            border-radius: 4px;
+        }
+
+        .nav.scrolled .nav-logo { height: 40px; }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: white;
+            transition: color var(--transition-fast);
+            font-weight: 400;
+        }
+
+        .nav.scrolled .nav-links a { color: var(--text); }
+        .nav-links a:hover { color: var(--copper); }
+
+        .nav-cta {
+            background: var(--copper) !important;
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem !important;
+            letter-spacing: 0.1em;
+            transition: background var(--transition-fast), transform var(--transition-fast) !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--copper-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px; height: 2px;
+            background: white;
+            transition: all var(--transition-fast);
+            display: block;
+        }
+
+        .nav.scrolled .hamburger span { background: var(--charcoal); }
+
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(245, 237, 224, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .mobile-menu.active { display: flex; }
+
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+            transition: color var(--transition-fast);
+        }
+
+        .mobile-menu a:hover { color: var(--copper); }
+
+        /* ═══════════════════════════════════════════
+           HERO — Fullscreen
+           ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('./images/fotograf/foto_077_595.jpg') center/cover no-repeat;
+        }
+
+        .hero-parallax {
+            position: absolute;
+            inset: -20%;
+            background: url('./images/fotograf/foto_077_595.jpg') center/cover no-repeat;
+            will-change: transform;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(45, 74, 62, 0.75) 0%,
+                rgba(44, 44, 44, 0.6) 50%,
+                rgba(45, 74, 62, 0.7) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 0 24px;
+            max-width: 800px;
+        }
+
+        .hero-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 1s 0.3s forwards;
+            color: var(--sand);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+            font-weight: 500;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeUp 1s 0.5s forwards;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeUp 1s 0.7s forwards;
+            color: var(--sand-dark);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeUp 1s 0.8s forwards;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 36px;
+            padding: 0 20px;
+        }
+
+        .hero-quote span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            margin-top: 8px;
+            color: var(--copper-light);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 1s 1s forwards;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.4s;
+        }
+
+        .hero-btn-primary {
+            background: var(--copper);
+            color: white;
+        }
+
+        .hero-btn-primary:hover {
+            background: var(--copper-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 118, 77, 0.4);
+        }
+
+        .hero-btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .hero-btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeUp 1s 1.3s forwards;
+        }
+
+        .scroll-indicator div {
+            width: 1px; height: 60px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECTION BASICS
+           ═══════════════════════════════════════════ */
+        section { padding: 100px 0; }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--charcoal);
+            margin-bottom: 20px;
+        }
+
+        .section-divider {
+            width: 60px; height: 2px;
+            background: var(--copper-light);
+            margin-bottom: 32px;
+        }
+
+        .section-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 640px;
+            line-height: 1.9;
+        }
+
+        /* ═══════════════════════════════════════════
+           STATS BAR
+           ═══════════════════════════════════════════ */
+        .stats {
+            background: var(--forest);
+            padding: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 48px 24px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--copper-light);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .stat-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        /* ═══════════════════════════════════════════
+           OM OS
+           ═══════════════════════════════════════════ */
+        .about { background: var(--sand); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-images {
+            position: relative;
+        }
+
+        .about-img-main {
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            width: 100%;
+            height: 500px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-img-inset {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius-md);
+            object-fit: cover;
+            border: 6px solid var(--sand);
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--forest);
+            border-left: 3px solid var(--copper);
+            padding-left: 24px;
+            margin-top: 32px;
+            line-height: 1.8;
+        }
+
+        .about-author {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .about-author-img {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .about-author-name {
+            font-weight: 500;
+            color: var(--charcoal);
+        }
+
+        .about-author-role {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICES
+           ═══════════════════════════════════════════ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 380px;
+            cursor: pointer;
+        }
+
+        .service-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .service-card:hover img { transform: scale(1.08); }
+
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(44,44,44,0.85) 0%, rgba(44,44,44,0.2) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            transition: background var(--transition-med);
+        }
+
+        .service-card:hover .service-card-overlay {
+            background: linear-gradient(to top, rgba(45,74,62,0.9) 0%, rgba(45,74,62,0.3) 60%, transparent 100%);
+        }
+
+        .service-card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--copper-light);
+            margin-bottom: 6px;
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-med), opacity 0.4s;
+            opacity: 0;
+        }
+
+        .service-card:hover p { max-height: 200px; opacity: 1; }
+
+        /* ═══════════════════════════════════════════
+           GALLERY — Filterable + Lightbox
+           ═══════════════════════════════════════════ */
+        .gallery { background: var(--sand); }
+
+        .gallery-filters {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .gallery-filter {
+            background: transparent;
+            border: 1px solid var(--sand-dark);
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .gallery-filter:hover,
+        .gallery-filter.active {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: opacity var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .gallery-item.hidden {
+            display: none;
+        }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-item:hover { box-shadow: var(--shadow-md); }
+
+        .gallery-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.94);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .lightbox.active { display: flex; opacity: 1; }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px; right: 32px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            width: 48px; height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background var(--transition-fast);
+        }
+
+        .lightbox-close:hover { background: rgba(255,255,255,0.2); }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 56px; height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transition: background var(--transition-fast);
+        }
+
+        .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+        .lightbox-prev { left: 24px; }
+        .lightbox-next { right: 24px; }
+
+        /* ═══════════════════════════════════════════
+           PROCESS — How We Work
+           ═══════════════════════════════════════════ */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 40px 24px;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: -16px;
+            width: 32px;
+            height: 1px;
+            background: var(--copper-light);
+        }
+
+        .process-step:last-child::after { display: none; }
+
+        .process-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--copper-light);
+            opacity: 0.5;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .process-step h4 {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════════════════════
+           PARTNERS / TRUST
+           ═══════════════════════════════════════════ */
+        .partners { background: var(--sand); }
+
+        .partners-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+
+        .partner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.7;
+            transition: opacity var(--transition-fast);
+        }
+
+        .partner-item:hover { opacity: 1; }
+
+        .partner-item img {
+            height: 60px;
+            object-fit: contain;
+            filter: grayscale(30%);
+            transition: filter var(--transition-fast);
+        }
+
+        .partner-item:hover img { filter: grayscale(0%); }
+
+        .partner-item span {
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTACT
+           ═══════════════════════════════════════════ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .contact-info-block { margin-bottom: 32px; }
+
+        .contact-info-block h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--charcoal);
+        }
+
+        .contact-info-block p,
+        .contact-info-block a {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 2;
+        }
+
+        .contact-info-block a:hover { color: var(--copper); }
+
+        .hours-table { width: 100%; }
+
+        .hours-table tr td {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--sand-dark);
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .hours-table tr td:first-child {
+            font-weight: 500;
+            color: var(--text);
+            width: 120px;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--copper);
+            color: white;
+            padding: 16px 36px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.4s;
+            margin-top: 24px;
+        }
+
+        .contact-btn:hover {
+            background: var(--copper-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(184, 118, 77, 0.3);
+        }
+
+        .map-container {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map-container iframe {
+            width: 100%; height: 100%;
+            border: none;
+            filter: saturate(0.8) brightness(1.05);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            margin-top: 16px;
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 45px;
+            border-radius: 4px;
+            filter: brightness(1.5);
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--copper-light);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            font-size: 0.88rem;
+            line-height: 2.2;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-col a:hover { color: var(--copper-light); }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background var(--transition-fast);
+        }
+
+        .footer-social a:hover { background: var(--copper); }
+
+        /* ═══════════════════════════════════════════
+           FLOATING CTA
+           ═══════════════════════════════════════════ */
+        .floating-cta {
+            position: fixed;
+            bottom: 32px; right: 32px;
+            z-index: 900;
+            background: var(--copper);
+            color: white;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 24px rgba(184, 118, 77, 0.4);
+            transition: all var(--transition-fast);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .floating-cta.visible { opacity: 1; transform: translateY(0); }
+        .floating-cta:hover { background: var(--copper-dark); transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 32px rgba(184, 118, 77, 0.5); }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE — 3 breakpoints
+           ═══════════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-step::after { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+            .partners-grid { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .about-grid,
+            .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+
+            .about-img-inset { display: none; }
+            .about-img-main { height: 350px; }
+
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .stat-item { padding: 32px 16px; }
+            .stat-item:nth-child(2) { border-right: none; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { height: 300px; }
+            .service-card p { max-height: 200px; opacity: 1; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.wide { grid-column: span 1; aspect-ratio: 1; }
+
+            .process-grid { grid-template-columns: 1fr; gap: 16px; }
+            .process-step { padding: 24px; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+
+            section { padding: 72px 0; }
+            .map-container { min-height: 300px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .hero-btn { width: 100%; text-align: center; max-width: 280px; }
+            .stat-number { font-size: 2rem; }
+            .service-card { height: 260px; }
+            .service-card-overlay { padding: 20px; }
+            .floating-cta { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#hero"><img src="./images/logo.png" alt="E. Christiansen & Søn" class="nav-logo"></a>
+        <ul class="nav-links">
+            <li><a href="#om">Om os</a></li>
+            <li><a href="#ydelser">Ydelser</a></li>
+            <li><a href="#galleri">Galleri</a></li>
+            <li><a href="#partnere">Partnere</a></li>
+            <li><a href="#kontakt" class="nav-cta">Kontakt os</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#om" onclick="toggleMenu()">Om os</a>
+    <a href="#ydelser" onclick="toggleMenu()">Ydelser</a>
+    <a href="#galleri" onclick="toggleMenu()">Galleri</a>
+    <a href="#partnere" onclick="toggleMenu()">Partnere</a>
+    <a href="#kontakt" onclick="toggleMenu()">Kontakt os</a>
+    <a href="tel:66176464" style="color: var(--copper); font-family: 'Inter', sans-serif; font-size: 1rem; letter-spacing: 0.1em;">66 17 64 64</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+    <div class="hero-parallax" id="heroParallax"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-tagline">Tømrer- &amp; Murerfirma · Odense · Siden 1984</p>
+        <h1>E. Christiansen<br>&amp; Søn</h1>
+        <p class="hero-subtitle">Tre generationers håndværk.<br>Ét løfte om kvalitet.</p>
+        <div class="hero-quote">
+            "Jeg overtog virksomheden efter min far Erling i 2003 — efter 38 år valgte han at lade nye kræfter komme til."
+            <span>— Steen Ole Christiansen, Ejer</span>
+        </div>
+        <div class="hero-btns">
+            <a href="#kontakt" class="hero-btn hero-btn-primary">Få et uforpligtende tilbud</a>
+            <a href="#ydelser" class="hero-btn hero-btn-secondary">Se vores ydelser</a>
+        </div>
+    </div>
+    <div class="scroll-indicator"><div></div></div>
+</section>
+
+<!-- ═══ STATS BAR ═══ -->
+<section class="stats" id="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item reveal">
+                <div class="stat-icon">🏗️</div>
+                <div class="stat-number">40+</div>
+                <div class="stat-label">Års erfaring</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-1">
+                <div class="stat-icon">👷</div>
+                <div class="stat-number">25-30</div>
+                <div class="stat-label">Dygtige ansatte</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-2">
+                <div class="stat-icon">🛡️</div>
+                <div class="stat-number">BYG</div>
+                <div class="stat-label">Garanti medlem</div>
+            </div>
+            <div class="stat-item reveal reveal-delay-3">
+                <div class="stat-icon">🇩🇰</div>
+                <div class="stat-number">Hele</div>
+                <div class="stat-label">Danmark & Fyn</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ OM OS ═══ -->
+<section class="about" id="om">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-images reveal">
+                <img src="./images/fotograf/foto_079_588.jpg" alt="E. Christiansen & Søn i arbejde" class="about-img-main" loading="lazy">
+                <img src="./images/steen.png" alt="Steen Ole Christiansen" class="about-img-inset" loading="lazy">
+            </div>
+            <div class="reveal reveal-delay-2">
+                <span class="section-label">Vores historie</span>
+                <h2 class="section-title">Fra far til søn.<br>Fra håndværk til hjerte.</h2>
+                <div class="section-divider"></div>
+                <p class="section-text">Det hele begyndte med Erling Christiansen, der i over 38 år byggede et håndværksfirma op fra bunden i Odense. Et firma bygget på ordentlighed, faglig stolthed og det simple princip, at et håndtryk er et håndtryk.</p>
+                <p class="section-text" style="margin-top: 16px;">I 2003 overtog sønnen Steen virksomheden. Men historien starter egentlig allerede i 1984, da Steen begyndte sin karriere som tømrer i firmaet. I 1988 blev han formand og byggeleder — en rolle der gav ham et bredt kendskab til alt fra nybyggeri og ombygninger til murerfaget og tømrerarbejde.</p>
+                <p class="section-text" style="margin-top: 16px;">I dag har E. Christiansen & Søn 25-30 dygtige medarbejdere og løser opgaver over hele Fyn og Danmark. Fra det mindste reparationsarbejde til totalentreprise — altid med den samme faglige stolthed som Erling grundlagde.</p>
+                <div class="about-quote">
+                    "Jeg startede i 1984 min karriere i virksomheden som tømrer. I 1988 blev jeg formand og byggeleder, hvilket har givet mig mange gode erfaringer, og et meget bredt kendskab til nybyggeri, ombygninger, murerfaget og tømrerarbejde."
+                </div>
+                <div class="about-author">
+                    <img src="./images/steen.png" alt="Steen Ole Christiansen" class="about-author-img" loading="lazy">
+                    <div>
+                        <p class="about-author-name">Steen Ole Christiansen</p>
+                        <p class="about-author-role">Ejer & Direktør, 2. generation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ YDELSER ═══ -->
+<section id="ydelser">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Ydelser</span>
+            <h2 class="section-title">Alt inden for byg<br>under ét tag</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+            <p class="section-text" style="margin: 16px auto 0;">Fra det mindste reparationsarbejde til komplet totalentreprise. Vi har specialister inden for hvert fag — og 40+ års erfaring at trække på.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal reveal-delay-1">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-42_1124.jpg" alt="Tømrerarbejde" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">01</span>
+                    <h3>Tømrer</h3>
+                    <p>Bygningsrenovering, facaderenovering, om- og tilbygninger, forsikringsskader, isolering, bolig- og industribyggeri, vinduer og døre.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <img src="./images/murer/lokal-murer-ude-ved-kunde-paa-fyn_1169.jpg" alt="Murerarbejde" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">02</span>
+                    <h3>Murer</h3>
+                    <p>Professionelt murerarbejde med erfarne svende. Forskellige typer mursten, fugning og facadearbejde i Odense, Middelfart og hele Fyn.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <img src="./images/tag/tag1_2_1023.jpg" alt="Taglægning" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">03</span>
+                    <h3>Taglægger</h3>
+                    <p>Eternit, tegl, skifer, tagpap og glaserede tagsten. Komplet tagrenovering, overstrygning og understrygning under ledelse af formand Morten Frandsen.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-1">
+                <img src="./images/facade/facaden_730.jpg" alt="Facaderenovering" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">04</span>
+                    <h3>Facaderenovering</h3>
+                    <p>Komplet facaderenovering med isolering og facademaling. Vi giver dit hus nyt liv — både æstetisk og energimæssigt.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-2">
+                <img src="./images/doere/foto_058_378.jpg" alt="Døre og vinduer" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">05</span>
+                    <h3>Døre &amp; Vinduer</h3>
+                    <p>Over 40 års erfaring med montering og udskiftning. Officiel VELFAC partner — vi sikrer det perfekte resultat hver gang.</p>
+                </div>
+            </div>
+            <div class="service-card reveal reveal-delay-3">
+                <img src="./images/tilbygning/om-tilbygning_718.jpg" alt="Tilbygning" loading="lazy">
+                <div class="service-card-overlay">
+                    <span class="service-card-num">06</span>
+                    <h3>Tilbygning &amp; Renovering</h3>
+                    <p>Drømmer du om mere plads? Vi bygger til, bygger om og renoverer komplet — fra kælder til kvist. Totalentreprise fra første spadestik til aflevering.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section style="background: var(--sand);">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Sådan arbejder vi</span>
+            <h2 class="section-title">Fra idé til nøglefærdigt resultat</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal">
+                <div class="process-num">01</div>
+                <h4>Uforpligtende snak</h4>
+                <p>Vi mødes og gennemgår dine ønsker og behov. Ingen opgave er for stor eller for lille.</p>
+            </div>
+            <div class="process-step reveal reveal-delay-1">
+                <div class="process-num">02</div>
+                <h4>Tilbud &amp; planlægning</h4>
+                <p>Du modtager et detaljeret, gennemsigtigt tilbud med fast pris og tidsplan.</p>
+            </div>
+            <div class="process-step reveal reveal-delay-2">
+                <div class="process-num">03</div>
+                <h4>Udførelse</h4>
+                <p>Vores erfarne håndværkere udfører arbejdet med faglig stolthed og respekt for dit hjem.</p>
+            </div>
+            <div class="process-step reveal reveal-delay-3">
+                <div class="process-num">04</div>
+                <h4>Aflevering</h4>
+                <p>Grundig gennemgang og kvalitetskontrol. Vi forlader først når du er 100% tilfreds.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ GALLERI ═══ -->
+<section class="gallery" id="galleri">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Galleri</span>
+            <h2 class="section-title">Kvalitet du<br>kan se og røre</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="gallery-filters reveal">
+            <button class="gallery-filter active" data-filter="all">Alle</button>
+            <button class="gallery-filter" data-filter="tomrer">Tømrer</button>
+            <button class="gallery-filter" data-filter="murer">Murer</button>
+            <button class="gallery-filter" data-filter="tag">Tag</button>
+            <button class="gallery-filter" data-filter="vinduer">Døre & Vinduer</button>
+            <button class="gallery-filter" data-filter="facade">Facade</button>
+        </div>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Tømrer -->
+            <div class="gallery-item wide reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-42_1124.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-39_1116.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-40_1120.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-3_1136.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-29_1140.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-30_1144.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/galleri-tomrer/e._christiansen___soen-2_1132.jpg" alt="Tømrerarbejde" loading="lazy">
+            </div>
+            <!-- Murer -->
+            <div class="gallery-item wide reveal" data-cat="murer" onclick="openLightbox(this)">
+                <img src="./images/murer/lokal-murer-ude-ved-kunde-paa-fyn_1169.jpg" alt="Murerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="murer" onclick="openLightbox(this)">
+                <img src="./images/murer/murer_1175.jpg" alt="Murerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="murer" onclick="openLightbox(this)">
+                <img src="./images/murer/murer_1176.jpg" alt="Murerarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="murer" onclick="openLightbox(this)">
+                <img src="./images/murer/lokal-murer-ude-ved-kunde-paa-fyn_1170.jpg" alt="Murerarbejde" loading="lazy">
+            </div>
+            <!-- Tag -->
+            <div class="gallery-item reveal" data-cat="tag" onclick="openLightbox(this)">
+                <img src="./images/tag/tag1_2_1023.jpg" alt="Tagarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tag" onclick="openLightbox(this)">
+                <img src="./images/tag/tag1_2_1024.jpg" alt="Tagarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item wide reveal" data-cat="tag" onclick="openLightbox(this)">
+                <img src="./images/tag/tag2_3_1029.jpg" alt="Tagarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tag" onclick="openLightbox(this)">
+                <img src="./images/tag/tag3_2_1035.jpg" alt="Tagarbejde" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tag" onclick="openLightbox(this)">
+                <img src="./images/tag/tag3_2_1036.jpg" alt="Tagarbejde" loading="lazy">
+            </div>
+            <!-- Vinduer -->
+            <div class="gallery-item reveal" data-cat="vinduer" onclick="openLightbox(this)">
+                <img src="./images/doere/foto_058_378.jpg" alt="Døre og vinduer" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="vinduer" onclick="openLightbox(this)">
+                <img src="./images/doere/foto_058_379.jpg" alt="Døre og vinduer" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="vinduer" onclick="openLightbox(this)">
+                <img src="./images/doere/foto_110_616.jpg" alt="Vinduer" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="vinduer" onclick="openLightbox(this)">
+                <img src="./images/doere/foto_127_609.jpg" alt="Døre" loading="lazy">
+            </div>
+            <!-- Facade -->
+            <div class="gallery-item wide reveal" data-cat="facade" onclick="openLightbox(this)">
+                <img src="./images/facade/facaden_730.jpg" alt="Facaderenovering" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="facade" onclick="openLightbox(this)">
+                <img src="./images/facade/facaden_731.jpg" alt="Facaderenovering" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="facade" onclick="openLightbox(this)">
+                <img src="./images/facade/facaden_732.jpg" alt="Facaderenovering" loading="lazy">
+            </div>
+            <!-- Fotografbilleder -->
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/fotograf/foto_077_596.jpg" alt="Professionelt håndværk" loading="lazy">
+            </div>
+            <div class="gallery-item reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/fotograf/foto_079_590.jpg" alt="Professionelt håndværk" loading="lazy">
+            </div>
+            <div class="gallery-item wide reveal" data-cat="tomrer" onclick="openLightbox(this)">
+                <img src="./images/fotograf/foto_158_602.jpg" alt="Professionelt håndværk" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <span class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#8249;</span>
+    <img id="lightboxImg" src="" alt="">
+    <span class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#8250;</span>
+</div>
+
+<!-- ═══ PARTNERE ═══ -->
+<section class="partners" id="partnere">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Partnere &amp; certificeringer</span>
+            <h2 class="section-title">Kvalitet du kan stole på</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+            <p class="section-text" style="margin: 16px auto 0;">Vi er stolte medlemmer af BYGgaranti og officiel VELFAC partner. Din sikkerhed for professionelt håndværk.</p>
+        </div>
+        <div class="partners-grid reveal">
+            <div class="partner-item">
+                <img src="./images/byg-garanti.png" alt="BYGgaranti" loading="lazy">
+                <span>BYGgaranti</span>
+            </div>
+            <div class="partner-item">
+                <img src="./images/velfac-logo.jpg" alt="VELFAC Partner" loading="lazy">
+                <span>VELFAC Partner</span>
+            </div>
+            <div class="partner-item">
+                <img src="./images/houzz.png" alt="Houzz" loading="lazy">
+                <span>Houzz</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ KONTAKT ═══ -->
+<section id="kontakt">
+    <div class="container">
+        <div class="reveal" style="text-align: center; max-width: 640px; margin: 0 auto;">
+            <span class="section-label">Kontakt</span>
+            <h2 class="section-title">Lad os tage en snak<br>om dit projekt</h2>
+            <div class="section-divider" style="margin: 20px auto 0;"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="contact-info-block">
+                    <h4>Besøg os</h4>
+                    <p>E. Christiansen & Søn<br>Byghøjvej 1<br>5250 Odense SV</p>
+                </div>
+                <div class="contact-info-block">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="tel:66176464">📞 66 17 64 64</a><br>
+                        <a href="mailto:steen@ecs.dk">✉️ steen@ecs.dk</a>
+                    </p>
+                </div>
+                <div class="contact-info-block">
+                    <h4>Åbningstider</h4>
+                    <table class="hours-table">
+                        <tr><td>Mandag</td><td>07:00 – 16:00</td></tr>
+                        <tr><td>Tirsdag</td><td>07:00 – 16:00</td></tr>
+                        <tr><td>Onsdag</td><td>07:00 – 16:00</td></tr>
+                        <tr><td>Torsdag</td><td>07:00 – 16:00</td></tr>
+                        <tr><td>Fredag</td><td>07:00 – 14:00</td></tr>
+                        <tr><td>Weekend</td><td style="color: var(--copper);">Lukket</td></tr>
+                    </table>
+                </div>
+                <div class="contact-info-block">
+                    <h4>CVR</h4>
+                    <p>25691121</p>
+                </div>
+                <a href="tel:66176464" class="contact-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Ring til os — 66 17 64 64
+                </a>
+                <div style="margin-top: 24px;">
+                    <a href="https://www.facebook.com/E-Christiansen-S%C3%B8n-T%C3%B8mrer-og-Murerfirma-ApS-218647751872804/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: var(--text-light); font-size: 0.9rem; transition: color 0.3s;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        Følg os på Facebook
+                    </a>
+                </div>
+            </div>
+            <div class="map-container reveal reveal-delay-2">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2248.5!2d10.3451!3d55.3733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464cdab08ed8e73d%3A0x88d5f18b9b2bf710!2sBygh%C3%B8jvej%201%2C%205250%20Odense%20SV!5e0!3m2!1sda!2sdk!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="./images/logo.png" alt="E. Christiansen & Søn" class="footer-logo">
+                <p>Familieejet tømrer- og murerfirma i Odense med over 40 års erfaring. Fra det mindste reparationsarbejde til komplet totalentreprise.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Ydelser</h4>
+                <a href="#ydelser">Tømrer</a>
+                <a href="#ydelser">Murer</a>
+                <a href="#ydelser">Taglægger</a>
+                <a href="#ydelser">Facaderenovering</a>
+                <a href="#ydelser">Døre & Vinduer</a>
+                <a href="#ydelser">Tilbygning</a>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="#om">Om os</a>
+                <a href="#ydelser">Ydelser</a>
+                <a href="#galleri">Galleri</a>
+                <a href="#partnere">Partnere</a>
+                <a href="#kontakt">Kontakt</a>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <p>Byghøjvej 1</p>
+                <p>5250 Odense SV</p>
+                <a href="tel:66176464">66 17 64 64</a>
+                <a href="mailto:steen@ecs.dk">steen@ecs.dk</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 E. Christiansen & Søn Tømrer- og Murerfirma ApS · CVR: 25691121</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/E-Christiansen-S%C3%B8n-T%C3%B8mrer-og-Murerfirma-ApS-218647751872804/" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══ FLOATING CTA ═══ -->
+<a href="tel:66176464" class="floating-cta" id="floatingCta" title="Ring 66 17 64 64">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
+<!-- ═══ JAVASCRIPT ═══ -->
+<script>
+    // ─── Nav scroll effect ───
+    const nav = document.getElementById('nav');
+    const floatingCta = document.getElementById('floatingCta');
+    const heroParallax = document.getElementById('heroParallax');
+
+    window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > 80) {
+            nav.classList.add('scrolled');
+            floatingCta.classList.add('visible');
+        } else {
+            nav.classList.remove('scrolled');
+            floatingCta.classList.remove('visible');
+        }
+        // Parallax
+        if (heroParallax) {
+            heroParallax.style.transform = `translateY(${y * 0.3}px)`;
+        }
+    });
+
+    // ─── Mobile menu ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // ─── Scroll reveal ───
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ─── Gallery filter ───
+    const filters = document.querySelectorAll('.gallery-filter');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filters.forEach(f => f.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.dataset.filter;
+
+            galleryItems.forEach(item => {
+                if (cat === 'all' || item.dataset.cat === cat) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // ─── Lightbox ───
+    let currentLightboxIndex = 0;
+    let lightboxImages = [];
+
+    function getVisibleImages() {
+        return Array.from(document.querySelectorAll('.gallery-item:not(.hidden)'));
+    }
+
+    function openLightbox(el) {
+        lightboxImages = getVisibleImages();
+        currentLightboxIndex = lightboxImages.indexOf(el);
+        const img = el.querySelector('img');
+        document.getElementById('lightboxImg').src = img.src;
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+        event.stopPropagation();
+        currentLightboxIndex = (currentLightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+        const img = lightboxImages[currentLightboxIndex].querySelector('img');
+        document.getElementById('lightboxImg').src = img.src;
+    }
+
+    // Close on background click
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('lightbox') || e.target === document.getElementById('lightboxImg')) {
+            closeLightbox();
+        }
+    });
+
+    // Keyboard nav
+    document.addEventListener('keydown', (e) => {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+    });
+
+    // ─── Smooth scroll for anchor links ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+
+    // ─── Stats counter animation ───
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeUp 0.6s ease forwards';
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(el => statsObserver.observe(el));
+</script>
+
+</body>
+</html>
