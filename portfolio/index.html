@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Se eksempler på hjemmesider jeg har lavet til små danske virksomheder. Moderne, hurtige og mobilvenlige.">
+    <title>Portfolio — Anders Schriver | Freelance Webdesigner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --dark: #1e293b;
+            --black: #0f172a;
+            --accent: #0066ff;
+            --accent-dark: #0052cc;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: var(--dark); text-decoration: none; font-weight: 600; }
+        nav .back { color: var(--accent); font-size: 0.9rem; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 80px 24px 40px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            padding: 40px 24px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: var(--dark);
+            display: block;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .card-preview {
+            width: 100%;
+            height: 220px;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .card-preview iframe {
+            width: 200%;
+            height: 200%;
+            border: none;
+            transform: scale(0.5);
+            transform-origin: top left;
+            pointer-events: none;
+        }
+        .card-preview .fallback {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+        .card-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .card-body .type {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        .card-body .tag {
+            display: inline-block;
+            background: #e6f0ff;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 60px 24px 80px;
+            background: var(--white);
+        }
+        .cta h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        .cta p { color: var(--gray); margin-bottom: 24px; }
+        .cta a {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .cta a:hover { background: var(--accent-dark); }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/">Anders Schriver</a>
+        <a href="/" class="back">← Tilbage</a>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>Portfolio</h1>
+    <p>Eksempler på hjemmesider jeg har bygget til danske virksomheder. Hvert site er unikt og bygget fra bunden.</p>
+</div>
+
+<div class="grid">
+
+    <a class="card" href="/frants-larsen/">
+        <div class="card-preview"><span class="fallback">🎨</span></div>
+        <div class="card-body">
+            <h3>Malerfirmaet Frants Larsen</h3>
+            <p class="type">Maler — Viborg</p>
+            <span class="tag">Håndværk</span>
+        </div>
+    </a>
+
+    <a class="card" href="/norremarkens-auto/">
+        <div class="card-preview"><span class="fallback">🔧</span></div>
+        <div class="card-body">
+            <h3>Nørremarkens Auto</h3>
+            <p class="type">Autoværksted — Vejle</p>
+            <span class="tag">Auto</span>
+        </div>
+    </a>
+
+    <a class="card" href="/bertelsen-blomster/">
+        <div class="card-preview"><span class="fallback">💐</span></div>
+        <div class="card-body">
+            <h3>Bertelsen Blomster</h3>
+            <p class="type">Blomsterhandler — Horsens</p>
+            <span class="tag">Detail</span>
+        </div>
+    </a>
+
+    <a class="card" href="/elite-revision/">
+        <div class="card-preview"><span class="fallback">📊</span></div>
+        <div class="card-body">
+            <h3>Elite-Revision ApS</h3>
+            <p class="type">Revisor — Bjerringbro</p>
+            <span class="tag">Erhvervsservice</span>
+        </div>
+    </a>
+
+    <a class="card" href="/ecs/">
+        <div class="card-preview"><span class="fallback">🏗️</span></div>
+        <div class="card-body">
+            <h3>E. Christiansen & Søn</h3>
+            <p class="type">Tømrer & Murer — Odense</p>
+            <span class="tag">Håndværk</span>
+        </div>
+    </a>
+
+    <a class="card" href="/byens-cykel/">
+        <div class="card-preview"><span class="fallback">🚲</span></div>
+        <div class="card-body">
+            <h3>Byens Cykel og Scooter</h3>
+            <p class="type">Cykelhandler — Randers</p>
+            <span class="tag">Detail</span>
+        </div>
+    </a>
+
+</div>
+
+<div class="cta">
+    <h2>Vil du have en ny hjemmeside?</h2>
+    <p>Klar til brug fra 999 kr. Ingen abonnement, ingen skjulte gebyrer.</p>
+    <a href="mailto:hej@andersschriver.com">Skriv til mig →</a>
+</div>
+
+</body>
+</html>
