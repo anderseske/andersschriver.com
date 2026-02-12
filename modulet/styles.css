@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Bebas+Neue&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111;
+  --burgundy: #8B1A2B;
+  --burgundy-light: #b22244;
+  --neon-pink: #ff2d7b;
+  --neon-blue: #00d4ff;
+  --neon-purple: #a855f7;
+  --gold: #ffd700;
+  --white: #f5f5f5;
+  --gray: #999;
+  --card-bg: #1a1a1a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+.navbar.scrolled { padding: 0.6rem 2rem; background: rgba(10,10,10,0.95); }
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, var(--neon-pink), var(--burgundy-light));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--white); text-decoration: none; font-weight: 600;
+  font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
+  position: relative; transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+  height: 2px; background: var(--neon-pink); transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--neon-pink); }
+.nav-links a:hover::after { width: 100%; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { width: 28px; height: 2px; background: var(--white); transition: 0.3s; }
+
+/* HERO */
+.hero {
+  position: relative; height: 100vh; display: flex; align-items: center;
+  justify-content: center; text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('images/BgImg1.JPG') center/cover no-repeat;
+}
+.hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.8) 70%, var(--bg));
+}
+.hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 2rem; }
+.hero-tag {
+  font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--neon-pink); margin-bottom: 1rem;
+  animation: fadeUp 1s ease 0.2s both;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 12vw, 10rem);
+  letter-spacing: 8px; line-height: 0.95;
+  background: linear-gradient(135deg, #fff 0%, var(--neon-pink) 50%, var(--burgundy-light) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: fadeUp 1s ease 0.4s both;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--gray); margin-top: 1rem; font-weight: 400;
+  animation: fadeUp 1s ease 0.6s both;
+}
+.hero-cta {
+  margin-top: 2.5rem; display: inline-flex; gap: 1rem;
+  flex-wrap: wrap; justify-content: center;
+  animation: fadeUp 1s ease 0.8s both;
+}
+.btn {
+  display: inline-block; padding: 1rem 2.5rem; border-radius: 50px;
+  font-weight: 700; font-size: 0.9rem; letter-spacing: 2px;
+  text-transform: uppercase; text-decoration: none; transition: all 0.3s;
+  position: relative; overflow: hidden; cursor: pointer; border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--burgundy), var(--neon-pink));
+  color: white; box-shadow: 0 4px 30px rgba(255,45,123,0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 40px rgba(255,45,123,0.5);
+}
+.btn-outline {
+  background: transparent; color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover {
+  border-color: var(--neon-pink); color: var(--neon-pink);
+  transform: translateY(-3px);
+}
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+.scroll-indicator span {
+  display: block; width: 24px; height: 24px; border-right: 2px solid var(--neon-pink);
+  border-bottom: 2px solid var(--neon-pink); transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+/* SECTIONS */
+section { padding: 6rem 2rem; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 4px;
+}
+.section-header p { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
+.accent { color: var(--neon-pink); }
+.section-alt { background: var(--bg2); }
+
+/* FEATURES */
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem; max-width: 1200px; margin: 0 auto;
+}
+.feature-card {
+  background: var(--card-bg); border-radius: 16px; padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s; position: relative; overflow: hidden;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--burgundy), var(--neon-pink));
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.feature-card:hover { transform: translateY(-8px); border-color: rgba(255,45,123,0.2); }
+.feature-card:hover::before { transform: scaleX(1); }
+.feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.feature-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-weight: 700; }
+.feature-card p { color: var(--gray); font-size: 0.95rem; }
+
+/* ABOUT */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; max-width: 1200px; margin: 0 auto; align-items: center;
+}
+.about-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.about-images img {
+  width: 100%; border-radius: 12px; aspect-ratio: 4/3; object-fit: cover;
+  transition: transform 0.4s; border: 1px solid rgba(255,255,255,0.05);
+}
+.about-images img:hover { transform: scale(1.03); }
+.about-images img:first-child { grid-column: 1 / -1; aspect-ratio: 16/9; }
+.about-text h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 3px; margin-bottom: 1.5rem;
+}
+.about-text p { color: var(--gray); margin-bottom: 1rem; line-height: 1.8; }
+
+/* AUDIO PLAYER */
+.audio-section { text-align: center; }
+.audio-player {
+  max-width: 500px; margin: 2rem auto; background: var(--card-bg);
+  border-radius: 16px; padding: 2rem; border: 1px solid rgba(255,255,255,0.05);
+}
+.audio-player .play-btn {
+  width: 70px; height: 70px; border-radius: 50%; border: none; cursor: pointer;
+  background: linear-gradient(135deg, var(--burgundy), var(--neon-pink));
+  color: white; font-size: 1.5rem; display: flex; align-items: center;
+  justify-content: center; margin: 0 auto 1rem; transition: all 0.3s;
+  box-shadow: 0 4px 30px rgba(255,45,123,0.3);
+}
+.audio-player .play-btn:hover {
+  transform: scale(1.1); box-shadow: 0 6px 40px rgba(255,45,123,0.5);
+}
+.progress-bar {
+  width: 100%; height: 4px; background: rgba(255,255,255,0.1);
+  border-radius: 2px; cursor: pointer; margin-top: 1rem; position: relative;
+}
+.progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--burgundy), var(--neon-pink));
+  border-radius: 2px; width: 0%; transition: width 0.1s;
+}
+.audio-title { font-weight: 600; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; }
+.audio-sub { color: var(--gray); font-size: 0.8rem; }
+
+/* TESTIMONIALS */
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem; max-width: 1200px; margin: 0 auto;
+}
+.testimonial-card {
+  background: var(--card-bg); border-radius: 16px; padding: 2rem;
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.4s; position: relative;
+}
+.testimonial-card:hover { transform: translateY(-5px); border-color: rgba(255,45,123,0.15); }
+.testimonial-stars { color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem; }
+.testimonial-card blockquote {
+  color: var(--gray); font-size: 0.95rem; line-height: 1.7;
+  font-style: italic; margin-bottom: 1.5rem;
+}
+.testimonial-author { font-weight: 700; font-size: 0.85rem; color: var(--neon-pink); }
+
+/* REPERTOIRE */
+.repertoire-tags {
+  display: flex; flex-wrap: wrap; gap: 0.8rem;
+  justify-content: center; max-width: 1000px; margin: 0 auto;
+}
+.tag {
+  padding: 0.6rem 1.4rem; border-radius: 50px;
+  background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.85rem; font-weight: 600; letter-spacing: 1px;
+  transition: all 0.3s; cursor: default;
+}
+.tag:hover {
+  border-color: var(--neon-pink); color: var(--neon-pink);
+  transform: translateY(-3px); box-shadow: 0 4px 20px rgba(255,45,123,0.15);
+}
+.tag.danish { border-color: rgba(139,26,43,0.4); color: var(--burgundy-light); }
+.tag.danish:hover { border-color: var(--burgundy-light); }
+
+/* GALLERY */
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem; max-width: 1200px; margin: 0 auto;
+}
+.gallery-grid img {
+  width: 100%; border-radius: 12px; aspect-ratio: 16/10; object-fit: cover;
+  transition: all 0.4s; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.gallery-grid img:hover { transform: scale(1.02); border-color: rgba(255,45,123,0.2); }
+
+/* BOOKING / CONTACT */
+.booking-section {
+  text-align: center; padding: 8rem 2rem;
+  background: linear-gradient(135deg, rgba(139,26,43,0.15), rgba(10,10,10,1));
+  position: relative;
+}
+.booking-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255,45,123,0.08), transparent 60%);
+}
+.booking-content { position: relative; z-index: 2; }
+.booking-content h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem); letter-spacing: 4px;
+}
+.booking-content p { color: var(--gray); max-width: 600px; margin: 1rem auto 2rem; font-size: 1.1rem; }
+.contact-info {
+  display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; margin-top: 3rem;
+}
+.contact-item { text-align: center; }
+.contact-item .label {
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 0.3rem;
+}
+.contact-item .value {
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--white); text-decoration: none; display: block;
+}
+.contact-item a.value:hover { color: var(--neon-pink); }
+
+/* FOOTER */
+.footer {
+  text-align: center; padding: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  color: var(--gray); font-size: 0.8rem;
+}
+
+/* CONFETTI CANVAS */
+#confetti-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-10px); }
+  60% { transform: translateX(-50%) translateY(-5px); }
+}
+
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; background: rgba(10,10,10,0.98); padding: 2rem; gap: 1.5rem; }
+  .nav-links.active { display: flex; }
+  .hamburger { display: flex; }
+  .about-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  section { padding: 4rem 1.5rem; }
+  .contact-info { flex-direction: column; gap: 1.5rem; }
+}
+
+/* PARTICLES */
+.particles {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.particle {
+  position: absolute; width: 3px; height: 3px; border-radius: 50%;
+  background: var(--neon-pink); opacity: 0;
+  animation: particleFloat 6s infinite;
+}
+@keyframes particleFloat {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  20% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-100px) scale(1); }
+}
