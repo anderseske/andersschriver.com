@@ -1,0 +1,4 @@
+{
+  "version": 1,
+  "exclude": ["/modulet/*", "/frants-larsen/*", "/bertelsen-blomster/*", "/elite-revision/*", "/ecs/*", "/byens-cykel/*", "/norremarkens-auto/*", "/portfolio/*", "/frisor-wellness/*"]
+}
